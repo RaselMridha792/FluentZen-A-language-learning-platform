@@ -4,6 +4,8 @@ import SignIn from "../pages/authentication/SignIn";
 import SignUp from "../pages/authentication/SignUp";
 import ErrorPage from "../components/layouts/ErrorPage";
 import App from "../App";
+import ResetPassword from "../pages/authentication/ResetPassword";
+import AddTutorials from "../pages/dashboard/AddTutorials";
 
 export const router = createBrowserRouter([
   {
@@ -23,6 +25,14 @@ export const router = createBrowserRouter([
         path: "/SignUp",
         element: <SignUp></SignUp>,
       },
+      {
+        path: '/resetPassword',
+        element: <ResetPassword></ResetPassword>
+      },
+      {
+        path: "/add-tutorials",
+        element: <AddTutorials></AddTutorials>
+      }
     ],
   },
 ]);

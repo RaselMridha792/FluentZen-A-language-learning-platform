@@ -7,7 +7,7 @@ import { ToastContainer, toast } from 'react-toastify';
 
 
 const SignUp = () => {
-    const {handleSignUp} = useContext(UserContext);
+    const {handleSignUp, handleUpdateProfile} = useContext(UserContext);
     const [eye, SetEye] = useState(false);
     const [errorMessage, setErrorMessage] = useState('')
     const passwordRegex =/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@#$%^&*()]).{6,}$/;
@@ -34,8 +34,15 @@ const SignUp = () => {
 
     handleSignUp(email, password)
     .then(result =>{
+
+      handleUpdateProfile({displayName: name, photoURL: photo})
+      .then(() =>{
         toast.success("account created successfully");
         navigate('/')
+      })
+      .catch(error =>{
+        console.log(error.message)
+      })
     })
     .catch(error=>{
         toast.error(error.message)

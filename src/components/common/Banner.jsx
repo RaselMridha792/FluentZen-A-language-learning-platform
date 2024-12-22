@@ -1,25 +1,26 @@
 import React from "react";
+import banner1 from "../../assets/banner/banner1.jpg";
+import { FaLongArrowAltRight } from "react-icons/fa";
 
 const Banner = () => {
   return (
     <>
-      <div
-        className="hero min-h-screen"
-        style={{
-          backgroundImage:
-            "url(https://img.daisyui.com/images/stock/photo-1507358522600-9f71e620c44e.webp)",
-        }}
-      >
-        <div className="hero-overlay bg-opacity-60"></div>
-        <div className="hero-content text-neutral-content text-center">
-          <div className="max-w-md">
-            <h1 className="mb-5 text-5xl font-bold">Hello there</h1>
-            <p className="mb-5">
-              Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda
-              excepturi exercitationem quasi. In deleniti eaque aut repudiandae
-              et a id nisi.
+      <div className="bg-emerald-300 font-Noto-Sans py-20 text-black">
+        <div className="flex flex-col lg:flex-row items-center justify-between lg:w-8/12 md:w-10/12 gap-10 mx-auto px-5">
+          <div className="space-y-6">
+            <h1 className="text-4xl font-bold lg:w-3/4">
+              Master skills faster with expert guidance.
+            </h1>
+            <p className="lg:w-3/4">
+              Master Skills Faster with Expert Guidance – Your Path to Success
+              Starts Here!
             </p>
-            <button className="btn btn-primary">Get Started</button>
+            <button className="btn bg-gray-900 text-white border-none px-10 text-xl hover:bg-gray-600">
+              Get Started <FaLongArrowAltRight />
+            </button>
+          </div>
+          <div className="">
+            <img className="md:w-[600px] w-96 rounded-2xl" src={banner1} />
           </div>
         </div>
       </div>
