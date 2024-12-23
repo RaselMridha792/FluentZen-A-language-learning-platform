@@ -6,6 +6,7 @@ import ErrorPage from "../components/layouts/ErrorPage";
 import App from "../App";
 import ResetPassword from "../pages/authentication/ResetPassword";
 import AddTutorials from "../pages/dashboard/AddTutorials";
+import FindTutors from "../pages/FindTutors/FindTutors";
 
 export const router = createBrowserRouter([
   {
@@ -32,6 +33,10 @@ export const router = createBrowserRouter([
       {
         path: "/add-tutorials",
         element: <AddTutorials></AddTutorials>
+      },
+      {
+        path: "/find-tutors",
+        element: <FindTutors></FindTutors>
       }
     ],
   },

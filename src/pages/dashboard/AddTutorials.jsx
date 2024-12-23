@@ -3,8 +3,7 @@ import { UserContext } from "../../context/AuthContext";
 
 const AddTutorials = () => {
   const { user } = useContext(UserContext);
-
-  const handleAddTutorial = (e) =>{
+  const handleAddTutorial = (e) => {
     e.preventDefault();
     const form = e.target;
     const name = form.email.value;
@@ -14,23 +13,32 @@ const AddTutorials = () => {
     const prices = form.prices.value;
     const review = form.review.value;
     const description = form.description.value;
-    const price = parseInt(prices)
-    const tutorialData = {name, email, image, language, price, review, description} 
-    console.log(tutorialData)
+    const price = parseInt(prices);
+    const user_image = user.photoURL;
+    const tutorialData = {
+      name,
+      email,
+      image,
+      language,
+      price,
+      review,
+      description,
+      user_image,
+    };
+    console.log(tutorialData);
 
-    fetch('http://localhost:5000/add-tutorials',{
-        method: 'POST',
-        headers: {
-            'content-type': 'application/json'
-        },
-        body: JSON.stringify(tutorialData)
+    fetch("http://localhost:5000/add-tutorials", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(tutorialData),
     })
-    .then(res => res.json())
-    .then(data =>{
-        console.log(data)
-    })
-
-  }
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+      });
+  };
   return (
     <>
       <section className="max-w-screen-2xl mx-auto px-5 font-Noto-Sans">
@@ -99,15 +107,33 @@ const AddTutorials = () => {
                   <div className="flex flex-col md:flex-row gap-5">
                     <label className="form-control w-full">
                       <div className="label">
-                        <span className="label-text">Language*</span>
+                        <span className="label-text">language*</span>
                       </div>
-                      <input
-                        type="text"
-                        name="language"
-                        placeholder="write language in all lowercase"
-                        className="input input-bordered w-full"
-                        required
-                      />
+                      <select name="language" className="select select-bordered w-full">
+                        <option disabled selected>
+                          please select a language
+                        </option>
+                        <option>English</option>
+                        <option>Spanish</option>
+                        <option>French</option>
+                        <option>German</option>
+                        <option>Italian</option>
+                        <option>Chinese</option>
+                        <option>Korean</option>
+                        <option>Danish</option>
+                        <option>Arabic</option>
+                        <option>Japanese</option>
+                        <option>Hindi</option>
+                        <option>Bangla</option>
+                        <option>Portuguese</option>
+                        <option>Polish</option>
+                        <option>Dutch</option>
+                        <option>Urdu</option>
+                        <option>Greek</option>
+                        <option>Serbian</option>
+                        <option>Hebrew</option>
+                        <option>Ukrainian</option>
+                      </select>
                     </label>
                     <label className="form-control w-full">
                       <div className="label">
