@@ -10,6 +10,7 @@ import FindTutors from "../pages/FindTutors/FindTutors";
 import TutorialDetails from "../pages/tutorDetails/TutorialDetails";
 import MyTutorials from "../pages/myTutorials/MyTutorials";
 import UpdateTutorial from "../pages/UpdateTutorial/UpdateTutorial";
+import MyBookedTutors from "../pages/my booked tutor/MyBookedTutors";
 
 export const router = createBrowserRouter([
   {
@@ -54,6 +55,11 @@ export const router = createBrowserRouter([
       path: '/update-tutorial/:id',
       element: <UpdateTutorial></UpdateTutorial>,
       loader: ({params}) =>fetch(`http://localhost:5000/tutor/details/${params.id}`)
+      },
+      {
+        path: '/my-booked-tutor',
+        element: <MyBookedTutors></MyBookedTutors>,
+        loader : ()=> fetch('http://localhost:5000/my-booked-tutor')
       }
     ],
   },

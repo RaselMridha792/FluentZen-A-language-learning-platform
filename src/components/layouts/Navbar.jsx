@@ -10,13 +10,13 @@ const Navbar = () => {
   console.log(user);
   const links = (
     <>
-      <div className="flex gap-5 text-xl uppercase font-bold text-black">
+      <div className="flex flex-col lg:flex-row gap-5 text-xl uppercase font-bold text-black">
         <Link to="/">home</Link>
         <Link to="/find-tutors">Find Tutors</Link>
+        <Link to="/my-booked-tutor">My Booked Tutor</Link>
         <Link to="/add-tutorials">Add Tutorials</Link>
         <Link to="/my-tutorials">My Tutorials</Link>
-        <Link to="/signIn">Login</Link>
-        <Link to="/signUp">sign up</Link>
+
       </div>
     </>
   );
@@ -81,11 +81,11 @@ const Navbar = () => {
           </div>
           <div className="navbar-end">
             {user ? (
-              <button onClick={handleSignOut} className="btn bg-gray-900">
+              <button onClick={handleSignOut} className="btn bg-gray-900 text-white hover:bg-gray-700">
                 sign out
               </button>
             ) : (
-              <Link to="/signIn" className="btn bg-gray-900">
+              <Link to="/signIn" className="btn bg-gray-900 text-white hover:bg-gray-700">
                 login
               </Link>
             )}

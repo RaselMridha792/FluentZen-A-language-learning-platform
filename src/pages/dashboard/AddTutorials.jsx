@@ -12,7 +12,8 @@ const AddTutorials = () => {
     const image = form.image.value;
     const language = form.language.value;
     const prices = form.prices.value;
-    const review = form.review.value;
+    const reviews = form.reviews.value;
+    const review = parseInt(reviews);
     const description = form.description.value;
     const price = parseInt(prices);
     const user_image = user.photoURL;
@@ -149,7 +150,7 @@ const AddTutorials = () => {
                       </div>
                       <input
                         type="number"
-                        name="review"
+                        name="reviews"
                         defaultValue={0}
                         placeholder="hr email"
                         className="input input-bordered w-full"

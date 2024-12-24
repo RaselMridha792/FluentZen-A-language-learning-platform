@@ -4,10 +4,11 @@ import { IoLanguageSharp } from "react-icons/io5";
 import { MdEmail, MdOutlineCastForEducation } from "react-icons/md";
 import { useLoaderData } from "react-router-dom";
 import { UserContext } from "../../context/AuthContext";
+import Swal from "sweetalert2";
 
 const TutorialDetails = () => {
   const tutorials = useLoaderData();
-  const {user} = useContext(UserContext);
+  const { user } = useContext(UserContext);
   const {
     name,
     email,
@@ -20,21 +21,35 @@ const TutorialDetails = () => {
     _id,
   } = tutorials;
 
-  const handleBookTutor = () =>{
-    const bookedTutor =  {tutor_id:_id, image:user_image, language, price, tutorEmail:email, email:user.email}
+  const handleBookTutor = () => {
+    const bookedTutor = {
+      tutor_id: _id,
+      name,
+      image: user_image,
+      language,
+      price,
+      tutorEmail: email,
+      email: user.email,
+    };
 
-    fetch('http://localhost:5000/booked-tutor',{
-        method: 'POST',
-        headers: {
-            'content-type': 'application/json'
-        },
-        body: JSON.stringify(bookedTutor)
+    fetch("http://localhost:5000/booked-tutor", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(bookedTutor),
     })
-    .then(res => res.json())
-    .then(data=> {
-        console.log(data)
-    })
-  }
+      .then((res) => res.json())
+      .then((data) => {
+        if(data.acknowledged){
+          Swal.fire({
+            title: "Successfully Booked?",
+            text: "Tutorial booked Successfully",
+            icon: "success",
+          });
+        }
+      });
+  };
   return (
     <>
       <div className="max-w-screen-2xl mx-auto flex flex-col lg:flex-row lg:gap-10 font-Noto-Sans px-5">
@@ -89,7 +104,10 @@ const TutorialDetails = () => {
               </div>
             </div>
             <div className="space-y-2">
-              <button onClick={handleBookTutor} className="btn bg-gray-800 hover:bg-white hover:text-black hover:border-black text-white w-full">
+              <button
+                onClick={handleBookTutor}
+                className="btn bg-gray-800 hover:bg-white hover:text-black hover:border-black text-white w-full"
+              >
                 Book Now
               </button>
             </div>
