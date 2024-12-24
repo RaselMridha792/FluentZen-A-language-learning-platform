@@ -1,12 +1,100 @@
-import React from 'react';
+import React, { useState } from "react";
+import { FaStar } from "react-icons/fa";
+import { IoLanguageOutline, IoLanguageSharp } from "react-icons/io5";
+import { MdOutlineCastForEducation } from "react-icons/md";
+import { Link } from "react-router-dom";
 
-const TutorCard = ({tutor}) => {
-    console.log(tutor)
-    return (
-        <>
-        <h1>tutor card</h1>            
-        </>
-    );
+const TutorCard = ({ tutor }) => {
+  const [learnMore, setLearnMore] = useState(true);
+  const handleLearnMore = () => {
+    setLearnMore(!learnMore);
+  };
+  const {
+    name,
+    email,
+    image,
+    language,
+    price,
+    review,
+    description,
+    user_image,
+    _id,
+  } = tutor;
+  return (
+    <>
+      <div className="flex gap-5 group font-Noto-Sans">
+        <div className="border-2 p-5 hover:border-black lg:w-2/3">
+          <div className="gap-5 flex flex-col">
+            <div className="flex flex-col md:flex-row gap-5">
+              <img
+                className="md:w-40 md:h-40 object-cover"
+                src={user_image}
+                alt=""
+              />
+              <div className="md:flex justify-between w-full">
+                <div>
+                  <h1 className="text-xl font-bold">{name}</h1>
+                  <p className="flex items-center text-lg gap-1 capitalize">
+                    <MdOutlineCastForEducation />
+                    Lesson: {language}
+                  </p>
+                  <p className="flex items-center text-lg gap-1 capitalize">
+                    <IoLanguageSharp />
+                    Speak: {language}(Native)
+                  </p>
+                </div>
+                <div className="flex text-xl font-bold gap-5">
+                  <div>
+                    <p className="flex justify-center">
+                      <FaStar />
+                      {review}
+                    </p>
+                    <p className="text-sm">review</p>
+                  </div>
+                  <div>
+                    <p>${price}</p>
+                    <p className="text-sm">price</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div>
+              <p>
+                Details:{" "}
+                {learnMore ? (
+                  <>{description.slice(0, 300)}</>
+                ) : (
+                  <>{description}</>
+                )}
+                <button onClick={handleLearnMore} className="btn btn-link">
+                  learn more
+                </button>
+              </p>
+              <div>
+                <Link to={`/tutor/details/${_id}`}>
+                  <button className="btn bg-gray-800 hover:bg-white hover:text-black hover:border-black text-white">
+                    View Details
+                  </button>
+                </Link>
+                <button className="btn bg-gray-800 text-white">
+                  Add Tutorials
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+        {/* <div className="absolute top-0 right-0 transition-opacity duration-300 opacity-0 group-hover:opacity-100"> */}
+        <div className="w-1/3  transition-opacity duration-300 opacity-0 group-hover:opacity-100 hidden lg:block">
+          <div className="border p-5 shadow-xl space-y-2">
+            <img className="w-full h-64 object-cover" src={image} alt="" />
+            <button className="btn btn-outline w-full">
+              view full schedule
+            </button>
+          </div>
+        </div>
+      </div>
+    </>
+  );
 };
 
 export default TutorCard;

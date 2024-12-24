@@ -6,7 +6,7 @@ const AddTutorials = () => {
   const handleAddTutorial = (e) => {
     e.preventDefault();
     const form = e.target;
-    const name = form.email.value;
+    const name = form.name.value;
     const email = form.email.value;
     const image = form.image.value;
     const language = form.language.value;

@@ -7,6 +7,7 @@ import App from "../App";
 import ResetPassword from "../pages/authentication/ResetPassword";
 import AddTutorials from "../pages/dashboard/AddTutorials";
 import FindTutors from "../pages/FindTutors/FindTutors";
+import TutorialDetails from "../pages/tutorDetails/TutorialDetails";
 
 export const router = createBrowserRouter([
   {
@@ -37,6 +38,11 @@ export const router = createBrowserRouter([
       {
         path: "/find-tutors",
         element: <FindTutors></FindTutors>
+      },
+      {
+        path: "/tutor/details/:id",
+        element: <TutorialDetails></TutorialDetails>,
+        loader: ({params})=> fetch(`http://localhost:5000/tutor/details/${params.id}`)
       }
     ],
   },

@@ -2,16 +2,15 @@ import React, { useEffect, useState } from "react";
 import TutorCard from "./TutorCard";
 
 const FindTutors = () => {
-
-    const [tutors, setTutors] = useState([])
-    useEffect(()=>{
-        const loadData = async()=>{
-            const response = await fetch('http://localhost:5000/find-tutors')
-            const data = await response.json();
-            setTutors(data)
-        }
-        loadData()
-    },[])
+  const [tutors, setTutors] = useState([]);
+  useEffect(() => {
+    const loadData = async () => {
+      const response = await fetch("http://localhost:5000/find-tutors");
+      const data = await response.json();
+      setTutors(data);
+    };
+    loadData();
+  }, []);
   return (
     <>
       <section className="max-w-screen-2xl mx-auto px-5">
@@ -37,9 +36,15 @@ const FindTutors = () => {
         </div>
         <hr />
         <div className="my-20">
-          <h1 className="text-3xl font-bold">{tutors.length} English teachers that match your needs</h1>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-            {tutors.map(tutor => <TutorCard key={tutor._id} tutor={tutor}></TutorCard>)}
+          <h1 className="text-3xl font-bold">
+            {tutors.length} English teachers that match your needs
+          </h1>
+          <div className="mt-10 flex gap-5">
+            <div className="space-y-5">
+              {tutors.map((tutor) => (
+                <TutorCard key={tutor._id} tutor={tutor}></TutorCard>
+              ))}
+            </div>
           </div>
         </div>
       </section>
