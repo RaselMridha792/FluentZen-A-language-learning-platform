@@ -8,6 +8,7 @@ import ResetPassword from "../pages/authentication/ResetPassword";
 import AddTutorials from "../pages/dashboard/AddTutorials";
 import FindTutors from "../pages/FindTutors/FindTutors";
 import TutorialDetails from "../pages/tutorDetails/TutorialDetails";
+import MyTutorials from "../pages/myTutorials/MyTutorials";
 
 export const router = createBrowserRouter([
   {
@@ -43,6 +44,10 @@ export const router = createBrowserRouter([
         path: "/tutor/details/:id",
         element: <TutorialDetails></TutorialDetails>,
         loader: ({params})=> fetch(`http://localhost:5000/tutor/details/${params.id}`)
+      },
+      {
+        path: '/my-tutorials',
+        element: <MyTutorials></MyTutorials>
       }
     ],
   },

@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import { UserContext } from "../../context/AuthContext";
+import Swal from "sweetalert2";
 
 const AddTutorials = () => {
   const { user } = useContext(UserContext);
@@ -37,6 +38,13 @@ const AddTutorials = () => {
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
+        if(data.acknowledged == true){
+          Swal.fire({
+            title: "Added SuccessFull",
+            text: "Successfully added tutorials",
+            icon: "success"
+          });
+        }
       });
   };
   return (
