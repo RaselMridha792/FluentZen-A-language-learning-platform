@@ -9,6 +9,7 @@ import AddTutorials from "../pages/dashboard/AddTutorials";
 import FindTutors from "../pages/FindTutors/FindTutors";
 import TutorialDetails from "../pages/tutorDetails/TutorialDetails";
 import MyTutorials from "../pages/myTutorials/MyTutorials";
+import UpdateTutorial from "../pages/UpdateTutorial/UpdateTutorial";
 
 export const router = createBrowserRouter([
   {
@@ -48,6 +49,11 @@ export const router = createBrowserRouter([
       {
         path: '/my-tutorials',
         element: <MyTutorials></MyTutorials>
+      },
+      {
+      path: '/update-tutorial/:id',
+      element: <UpdateTutorial></UpdateTutorial>,
+      loader: ({params}) =>fetch(`http://localhost:5000/tutor/details/${params.id}`)
       }
     ],
   },

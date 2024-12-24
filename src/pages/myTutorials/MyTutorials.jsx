@@ -31,11 +31,17 @@ const MyTutorials = () => {
           .then((res) => res.json())
           .then((data) => {
             console.log(data);
-            Swal.fire({
-              title: "Deleted!",
-              text: "Your Tutorial has been deleted.",
-              icon: "success",
-            });
+            if (data.deletedCount == 1) {
+              Swal.fire({
+                title: "Deleted!",
+                text: "Your Tutorial has been deleted.",
+                icon: "success",
+              });
+              const remaining = tutorials.filter(
+                (tutorial) => tutorial._id !== id
+              );
+              setTutorials(remaining);
+            }
           });
       }
     });
@@ -97,7 +103,11 @@ const MyTutorials = () => {
                     </td>
                     <td>${tutorial.price}</td>
                     <th className="flex gap-3">
-                      <button className="btn btn-warning btn-xs">Update</button>
+                      <Link to={`/update-tutorial/${tutorial._id}`}>
+                        <button className="btn btn-warning btn-xs">
+                          Update
+                        </button>
+                      </Link>
                       <button
                         onClick={() => handleDeleteTutorial(tutorial._id)}
                         className="btn btn-error btn-xs"
