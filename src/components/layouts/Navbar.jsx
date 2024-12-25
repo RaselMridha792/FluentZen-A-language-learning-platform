@@ -4,19 +4,18 @@ import { UserContext } from "../../context/AuthContext";
 import { signOut } from "firebase/auth";
 import { auth } from "../auth/firebase.init";
 import logo from "../../assets/FluentZen.png";
+import { Tooltip } from "react-tooltip";
 
 const Navbar = () => {
   const { user } = useContext(UserContext);
-  console.log(user);
   const links = (
     <>
-      <div className="flex flex-col lg:flex-row gap-5 text-xl uppercase font-bold text-black">
+      <div className="flex flex-col lg:flex-row gap-5 text-lg uppercase font-bold text-black">
         <Link to="/">home</Link>
         <Link to="/find-tutors">Find Tutors</Link>
-        <Link to="/my-booked-tutor">My Booked Tutor</Link>
+        <Link to={`/my-booked-tutor/${user?.email}`}>My Booked Tutor</Link>
         <Link to="/add-tutorials">Add Tutorials</Link>
         <Link to="/my-tutorials">My Tutorials</Link>
-
       </div>
     </>
   );
@@ -35,7 +34,11 @@ const Navbar = () => {
       <div className="bg-emerald-300">
         <div className="max-w-screen-2xl mx-auto flex justify-between pt-5 px-5">
           <div></div>
-          <div><p className="text-black">Master Skills Faster with Expert Guidance</p></div>
+          <div>
+            <p className="text-black">
+              Master Skills Faster with Expert Guidance
+            </p>
+          </div>
           <input
             type="checkbox"
             value="dark"
@@ -79,13 +82,36 @@ const Navbar = () => {
           <div className="navbar-center hidden lg:flex">
             <ul className="menu menu-horizontal px-1">{links}</ul>
           </div>
-          <div className="navbar-end">
+          <div className="navbar-end space-x-4">
+            <div className="avatar">
+              <div className="w-12 border-4 border-black rounded-full">
+                <Tooltip id="my-tooltip" />
+                <a
+                  data-tooltip-id="my-tooltip"
+                  data-tooltip-content={user?.displayName}
+                >
+                  <img
+                    src={
+                      user
+                        ? user.photoURL
+                        : `https://img.icons8.com/?size=100&id=rrtYnzKMTlUr&format=png&color=000000`
+                    }
+                  />
+                </a>
+              </div>
+            </div>
             {user ? (
-              <button onClick={handleSignOut} className="btn bg-gray-900 text-white hover:bg-gray-700">
+              <button
+                onClick={handleSignOut}
+                className="btn bg-gray-900 text-white hover:bg-gray-700"
+              >
                 sign out
               </button>
             ) : (
-              <Link to="/signIn" className="btn bg-gray-900 text-white hover:bg-gray-700">
+              <Link
+                to="/signIn"
+                className="btn bg-gray-900 text-white hover:bg-gray-700"
+              >
                 login
               </Link>
             )}

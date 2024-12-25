@@ -2,16 +2,16 @@ import { useContext, useState } from "react";
 import { FaEyeSlash, FaRegEye } from "react-icons/fa";
 import { Link, useNavigate } from "react-router-dom";
 import { UserContext } from "../../context/AuthContext";
-import React from 'react';
-import { ToastContainer, toast } from 'react-toastify';
-
+import React from "react";
+import { ToastContainer, toast } from "react-toastify";
 
 const SignUp = () => {
-    const {handleSignUp, handleUpdateProfile} = useContext(UserContext);
-    const [eye, SetEye] = useState(false);
-    const [errorMessage, setErrorMessage] = useState('')
-    const passwordRegex =/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@#$%^&*()]).{6,}$/;
-    const navigate = useNavigate();
+  const { handleSignUp, handleUpdateProfile, handleSignInGoogle } = useContext(UserContext);
+  const [eye, SetEye] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
+  const passwordRegex =
+    /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@#$%^&*()]).{6,}$/;
+  const navigate = useNavigate();
   const handleSignUpemail = (e) => {
     e.preventDefault();
     const form = e.target;
@@ -20,39 +20,50 @@ const SignUp = () => {
     const password = form.password.value;
     const photo = form.photo.value;
 
-    if(password.length < 6){
-        setErrorMessage('password mast be 6 caracter or longer');
-        return;
+    if (password.length < 6) {
+      setErrorMessage("password mast be 6 caracter or longer");
+      return;
     }
-    if(!passwordRegex.test(password)){
-        setErrorMessage("password mast be at least one uppercase, lowercase, letter and special caracters");
-        return;
+    if (!passwordRegex.test(password)) {
+      setErrorMessage(
+        "password mast be at least one uppercase, lowercase, letter and special caracters"
+      );
+      return;
     }
-    setErrorMessage('')
+    setErrorMessage("");
 
     const userInfo = { name, email, password, photo };
 
     handleSignUp(email, password)
-    .then(result =>{
-
-      handleUpdateProfile({displayName: name, photoURL: photo})
-      .then(() =>{
-        toast.success("account created successfully");
-        navigate('/')
+      .then((result) => {
+        handleUpdateProfile({ displayName: name, photoURL: photo })
+          .then(() => {
+            toast.success("account created successfully");
+            navigate("/");
+          })
+          .catch((error) => {
+            console.log(error.message);
+          });
       })
-      .catch(error =>{
-        console.log(error.message)
-      })
-    })
-    .catch(error=>{
-        toast.error(error.message)
-    })
+      .catch((error) => {
+        toast.error(error.message);
+      });
   };
 
+  const handleEye = () => {
+    SetEye(!eye);
+  };
 
-  const handleEye = ()=>{
-    SetEye(!eye)
-  }
+  const handleSignInWithGoogle = () => {
+    handleSignInGoogle()
+      .then((result) => {
+        toast.success("login successfull");
+        navigate(location?.state ? location.state : "/");
+      })
+      .catch((error) => {
+        toast.error(error.message);
+      });
+  };
   return (
     <>
       <div className="hero bg-base-200 min-h-screen">
@@ -60,6 +71,14 @@ const SignUp = () => {
         <div className="card bg-base-100 md:w-1/4 px-5 py-5 shadow-2xl">
           <form onSubmit={handleSignUpemail} className="card-body">
             <h1 className="text-center text-3xl font-bold">Sign Up Now</h1>
+            <div>
+              <button
+                onClick={handleSignInWithGoogle}
+                className="btn btn-outline w-full"
+              >
+                Sign In With Google
+              </button>
+            </div>
             <div className="form-control">
               <label className="label">
                 <span className="label-text">Full Name*</span>
@@ -101,16 +120,14 @@ const SignUp = () => {
                 <span className="label-text">Password*</span>
               </label>
               <input
-                type={eye?"text":"password"}
+                type={eye ? "text" : "password"}
                 name="password"
                 placeholder="password"
                 className="input input-bordered"
                 required
               />
               <div onClick={handleEye} className="absolute bottom-4 right-4">
-                {eye?<FaEyeSlash />: <FaRegEye />}
-               
-                
+                {eye ? <FaEyeSlash /> : <FaRegEye />}
               </div>
             </div>
             <div className="form-control mt-6">

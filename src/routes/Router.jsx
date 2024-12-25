@@ -11,6 +11,7 @@ import TutorialDetails from "../pages/tutorDetails/TutorialDetails";
 import MyTutorials from "../pages/myTutorials/MyTutorials";
 import UpdateTutorial from "../pages/UpdateTutorial/UpdateTutorial";
 import MyBookedTutors from "../pages/my booked tutor/MyBookedTutors";
+import PrivetRoute from "../privetRoutes/PrivetRoute";
 
 export const router = createBrowserRouter([
   {
@@ -31,36 +32,52 @@ export const router = createBrowserRouter([
         element: <SignUp></SignUp>,
       },
       {
-        path: '/resetPassword',
-        element: <ResetPassword></ResetPassword>
+        path: "/resetPassword",
+        element: <ResetPassword></ResetPassword>,
       },
       {
         path: "/add-tutorials",
-        element: <AddTutorials></AddTutorials>
+        element: <AddTutorials></AddTutorials>,
       },
       {
         path: "/find-tutors",
-        element: <FindTutors></FindTutors>
+        element: <FindTutors></FindTutors>,
       },
       {
         path: "/tutor/details/:id",
-        element: <TutorialDetails></TutorialDetails>,
-        loader: ({params})=> fetch(`http://localhost:5000/tutor/details/${params.id}`)
+        element: (
+          <PrivetRoute>
+            <TutorialDetails></TutorialDetails>
+          </PrivetRoute>
+        ),
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/tutor/details/${params.id}`),
       },
       {
-        path: '/my-tutorials',
-        element: <MyTutorials></MyTutorials>
+        path: "/my-tutorials",
+        element: <MyTutorials></MyTutorials>,
       },
       {
-      path: '/update-tutorial/:id',
-      element: <UpdateTutorial></UpdateTutorial>,
-      loader: ({params}) =>fetch(`http://localhost:5000/tutor/details/${params.id}`)
+        path: "/update-tutorial/:id",
+        element: <UpdateTutorial></UpdateTutorial>,
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/tutor/details/${params.id}`),
       },
       {
-        path: '/my-booked-tutor',
-        element: <MyBookedTutors></MyBookedTutors>,
-        loader : ()=> fetch('http://localhost:5000/my-booked-tutor')
-      }
+        path: "/my-booked-tutor/:user",
+        element: (
+          <PrivetRoute>
+            {" "}
+            <MyBookedTutors></MyBookedTutors>
+          </PrivetRoute>
+        )
+      },
+      {
+        path: "/find-tutors/:id",
+        element: <FindTutors></FindTutors>,
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/find-tutors/${params.id}`),
+      },
     ],
   },
 ]);

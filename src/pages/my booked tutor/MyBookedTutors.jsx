@@ -1,11 +1,21 @@
-import React from "react";
-import { Link, useLoaderData } from "react-router-dom";
+import React, { useContext, useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
+import { UserContext } from "../../context/AuthContext";
 
 const MyBookedTutors = () => {
-  const tutors = useLoaderData();
-  const { _id, tutor_id, language, price, tutorEmail, email } = tutors;
-  console.log(tutors);
+  const [tutors, setTutors] = useState([]);
+  const {user} = useContext(UserContext)
+  
+
+  useEffect(()=>{
+    const loadData = async()=>{
+      const response = await fetch(`http://localhost:5000/my-booked-tutor?email=${user.email}`)
+      const data = await response.json()
+      setTutors(data)
+    }
+    loadData()
+  },[user.email])
 
   const handleReview = (tutor_id) =>{
     console.log(tutor_id)
@@ -41,9 +51,8 @@ const MyBookedTutors = () => {
               {/* head */}
               <thead>
                 <tr>
-                  <th>Name</th>
+                  <th>Name, image</th>
                   <th>Language</th>
-                  <th>tutorial Details</th>
                   <th>$ price</th>
                   <th>Give Review</th>
                 </tr>
@@ -69,11 +78,6 @@ const MyBookedTutors = () => {
                     </td>
                     <td>
                       {tutorial.language}
-                    </td>
-                    <td className="lg:w-1/3">
-                      <Link to={`/tutor/details/${tutorial._id}`}>
-                        <button className="btn btn-link">view details</button>
-                      </Link>
                     </td>
                     <td>${tutorial.price}</td>
                     <th className="flex gap-3">

@@ -1,16 +1,24 @@
 import React, { useEffect, useState } from "react";
 import TutorCard from "./TutorCard";
+import { useLoaderData } from "react-router-dom";
 
 const FindTutors = () => {
   const [tutors, setTutors] = useState([]);
+  const categoryTutor = useLoaderData();
+  console.log(categoryTutor)
   useEffect(() => {
-    const loadData = async () => {
-      const response = await fetch("http://localhost:5000/find-tutors");
-      const data = await response.json();
-      setTutors(data);
-    };
-    loadData();
-  }, []);
+    if (categoryTutor) {
+      setTutors(categoryTutor);
+    } else {
+      const loadData = async () => {
+        const response = await fetch("http://localhost:5000/find-tutors");
+        const data = await response.json();
+        setTutors(data);
+      };
+      loadData();
+    }
+  }, [categoryTutor]);
+
   return (
     <>
       <section className="max-w-screen-2xl mx-auto px-5">
@@ -37,7 +45,7 @@ const FindTutors = () => {
         <hr />
         <div className="my-20">
           <h1 className="text-3xl font-bold">
-            {tutors.length} English teachers that match your needs
+            {tutors.length} tutors that match your needs
           </h1>
           <div className="mt-10 flex gap-5">
             <div className="space-y-5">

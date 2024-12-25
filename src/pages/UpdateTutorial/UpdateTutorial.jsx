@@ -34,7 +34,7 @@ const UpdateTutorial = () => {
       showCancelButton: true,
       confirmButtonColor: "#3085d6",
       cancelButtonColor: "#d33",
-      confirmButtonText: "Yes, delete it!",
+      confirmButtonText: "Yes, Update it!",
     }).then((result) => {
       if (result.isConfirmed) {
         fetch(`http://localhost:5000/update-tutorial/${_id}`, {
@@ -136,26 +136,26 @@ const UpdateTutorial = () => {
                         <option disabled selected>
                           please select a language
                         </option>
-                        <option>English</option>
-                        <option>Spanish</option>
-                        <option>French</option>
-                        <option>German</option>
-                        <option>Italian</option>
-                        <option>Chinese</option>
-                        <option>Korean</option>
-                        <option>Danish</option>
-                        <option>Arabic</option>
-                        <option>Japanese</option>
-                        <option>Hindi</option>
-                        <option>Bangla</option>
-                        <option>Portuguese</option>
-                        <option>Polish</option>
-                        <option>Dutch</option>
-                        <option>Urdu</option>
-                        <option>Greek</option>
-                        <option>Serbian</option>
-                        <option>Hebrew</option>
-                        <option>Ukrainian</option>
+                        <option>english</option>
+                        <option>spanish</option>
+                        <option>french</option>
+                        <option>german</option>
+                        <option>italian</option>
+                        <option>chinese</option>
+                        <option>korean</option>
+                        <option>danish</option>
+                        <option>arabic</option>
+                        <option>japanese</option>
+                        <option>hindi</option>
+                        <option>bangla</option>
+                        <option>portuguese</option>
+                        <option>polish</option>
+                        <option>dutch</option>
+                        <option>urdu</option>
+                        <option>greek</option>
+                        <option>serbian</option>
+                        <option>hebrew</option>
+                        <option>ukrainian</option>
                       </select>
                     </label>
                     <label className="form-control w-full">

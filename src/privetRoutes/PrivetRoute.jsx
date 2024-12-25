@@ -1,19 +1,21 @@
 import React, { useContext } from 'react';
 import { UserContext } from '../context/AuthContext';
-import { useNavigate } from 'react-router-dom';
+import { Navigate, useLocation } from 'react-router-dom';
 
 const PrivetRoute = ({children}) => {
     const {user, loader} = useContext(UserContext);
-    const navigate = useNavigate()
+    const location = useLocation()
     if(loader){
         return <>
-        <h1>page Loading</h1>
+        <div className='w-full min-h-screen flex justify-center items-center'>
+        <span className="loading loading-spinner loading-lg"></span>
+        </div>
         </>
     }
     if(user){
-        return children
+        return children;
     }
-    return navigate('/signIn')
+    return <Navigate state={location.pathname} to="/signIn"></Navigate>
 };
 
 export default PrivetRoute;

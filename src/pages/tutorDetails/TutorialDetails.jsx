@@ -41,7 +41,7 @@ const TutorialDetails = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        if(data.acknowledged){
+        if (data.acknowledged) {
           Swal.fire({
             title: "Successfully Booked?",
             text: "Tutorial booked Successfully",

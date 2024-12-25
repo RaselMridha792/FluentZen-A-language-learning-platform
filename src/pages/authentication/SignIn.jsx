@@ -1,13 +1,16 @@
 import { useContext, useState } from "react";
 import { FaEyeSlash, FaRegEye } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { UserContext } from "../../context/AuthContext";
 import React from 'react';
 import { ToastContainer, toast } from 'react-toastify';
 
 const SignIn = () => {
   const [eye, SetEye] = useState(false);
-  const {handleLogin} = useContext(UserContext)
+  const {handleLogin, handleSignInGoogle} = useContext(UserContext);
+  const navigate = useNavigate();
+  const location = useLocation();
+
   const handleSignIn = (e) => {
     e.preventDefault();
     const form = e.target;
@@ -17,22 +20,37 @@ const SignIn = () => {
     handleLogin(email, password)
     .then(result =>{
         toast.success('login successfull');
+        navigate(location?.state ? location.state : '/')
     })
     .catch(error=>{
         toast.error(error.message);
     })
   };
-
   const handleEye = () => {
     SetEye(!eye);
   };
+
+  
+  const handleSignInWithGoogle = () =>{
+    handleSignInGoogle()
+    .then(result=>{
+      toast.success('login successfull');
+      navigate(location?.state ? location.state : '/')
+    })
+    .catch(error =>{
+      toast.error(error.message);
+    })
+  }
   return (
     <>
       <div className="hero bg-base-200 min-h-screen">
         <ToastContainer></ToastContainer>
-        <div className="card bg-base-100 md:w-1/4 px-5 py-5 shadow-2xl">
+        <div className="card bg-base-100 lg:w-1/4 px-5 py-5 shadow-2xl">
           <form onSubmit={handleSignIn} className="card-body">
             <h1 className="text-center text-3xl font-bold">Login In Now</h1>
+            <div>
+              <button onClick={handleSignInWithGoogle} className="btn btn-outline w-full">Sign In With Google</button>
+            </div>
             <div className="form-control">
               <label className="label">
                 <span className="label-text">Email*</span>
