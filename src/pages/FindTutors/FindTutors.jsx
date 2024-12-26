@@ -1,24 +1,102 @@
 import React, { useEffect, useState } from "react";
 import TutorCard from "./TutorCard";
 import { useLoaderData } from "react-router-dom";
+import Select from "react-select";
 
 const FindTutors = () => {
   const [tutors, setTutors] = useState([]);
   const categoryTutor = useLoaderData();
-  console.log(categoryTutor)
+  const [selectedLanguage, setSelectedLanguage] = useState(null);
+  const [searchLanguage, setSearchLanguage] = useState(null);
   useEffect(() => {
-    if (categoryTutor) {
+    if(searchLanguage){
+      const loadData2 = async () =>{
+        const response = await fetch(`https://assignment-11-server-side-sandy.vercel.app/find-tutors/${searchLanguage}`)
+        const data = await response.json()
+        console.log(data)
+        setTutors(data);
+      }
+      loadData2()
+    }
+    else if (categoryTutor) {
       setTutors(categoryTutor);
-    } else {
+    } else{
       const loadData = async () => {
-        const response = await fetch("http://localhost:5000/find-tutors");
+        const response = await fetch(
+          "https://assignment-11-server-side-sandy.vercel.app/find-tutors"
+        );
         const data = await response.json();
         setTutors(data);
       };
       loadData();
     }
-  }, [categoryTutor]);
+  }, [categoryTutor, searchLanguage]);
 
+  // for implementing search features
+
+  const languages = [
+    {
+      value: "english",
+      label: "english",
+    },
+    {
+      value: "spanish",
+      label: "spanish",
+    },
+    {
+      value: "french",
+      label: "french",
+    },
+    {
+      value: "german",
+      label: "german",
+    },
+    {
+      value: "italian",
+      label: "italian",
+    },
+    {
+      value: "chinese",
+      label: "chinese",
+    },
+    {
+      value: "arabic",
+      label: "arabic",
+    },
+    {
+      value: "portuguese",
+      label: "portuguese",
+    },
+    {
+      value: "japanese",
+      label: "japanese",
+    },
+    {
+      value: "polish",
+      label: "polish",
+    },
+    {
+      value: "dutch",
+      label: "dutch",
+    },
+    {
+      value: "urdu",
+      label: "urdu",
+    },
+    {
+      value: "greek",
+      label: "greek",
+    },
+    {
+      value: "serbian",
+      label: "serbian",
+    },
+  ];
+
+  const handleChangeLanguage = (selectedOption) => {
+    setSelectedLanguage(selectedOption);
+    setSearchLanguage(selectedOption.value)
+  };
   return (
     <>
       <section className="max-w-screen-2xl mx-auto px-5">
@@ -26,21 +104,22 @@ const FindTutors = () => {
           <h1 className="text-2xl md:text-4xl font-bold">
             Find Your Best Tutors For Learning Language
           </h1>
-          <label className="input input-bordered md:w-1/3 w-full flex items-center gap-2">
-            <input type="text" className="grow" placeholder="Search Language" />
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 16 16"
-              fill="currentColor"
-              className="h-4 w-4 opacity-70"
-            >
-              <path
-                fillRule="evenodd"
-                d="M9.965 11.026a5 5 0 1 1 1.06-1.06l2.755 2.754a.75.75 0 1 1-1.06 1.06l-2.755-2.754ZM10.5 7a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0Z"
-                clipRule="evenodd"
-              />
-            </svg>
-          </label>
+          <div className="p-4 md:w-1/3 w-full">
+            <Select
+              options={languages}
+              value={selectedLanguage}
+              onChange={handleChangeLanguage}
+              placeholder="search for tutor"
+              isClearable
+            ></Select>
+            {selectedLanguage && (
+              <>
+                <div>
+                  <p>search for: {selectedLanguage.label}</p>
+                </div>
+              </>
+            )}
+          </div>
         </div>
         <hr />
         <div className="my-20">

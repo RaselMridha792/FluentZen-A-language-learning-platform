@@ -37,7 +37,11 @@ export const router = createBrowserRouter([
       },
       {
         path: "/add-tutorials",
-        element: <AddTutorials></AddTutorials>,
+        element: (
+          <PrivetRoute>
+            <AddTutorials></AddTutorials>
+          </PrivetRoute>
+        ),
       },
       {
         path: "/find-tutors",
@@ -51,17 +55,29 @@ export const router = createBrowserRouter([
           </PrivetRoute>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/tutor/details/${params.id}`),
+          fetch(
+            `https://assignment-11-server-side-sandy.vercel.app/tutor/details/${params.id}`
+          ),
       },
       {
         path: "/my-tutorials",
-        element: <MyTutorials></MyTutorials>,
+        element: (
+          <PrivetRoute>
+            <MyTutorials></MyTutorials>
+          </PrivetRoute>
+        ),
       },
       {
         path: "/update-tutorial/:id",
-        element: <UpdateTutorial></UpdateTutorial>,
+        element: (
+          <PrivetRoute>
+            <UpdateTutorial></UpdateTutorial>
+          </PrivetRoute>
+        ),
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/tutor/details/${params.id}`),
+          fetch(
+            `https://assignment-11-server-side-sandy.vercel.app/tutor/details/${params.id}`
+          ),
       },
       {
         path: "/my-booked-tutor/:user",
@@ -70,13 +86,15 @@ export const router = createBrowserRouter([
             {" "}
             <MyBookedTutors></MyBookedTutors>
           </PrivetRoute>
-        )
+        ),
       },
       {
         path: "/find-tutors/:id",
         element: <FindTutors></FindTutors>,
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/find-tutors/${params.id}`),
+          fetch(
+            `https://assignment-11-server-side-sandy.vercel.app/find-tutors/${params.id}`
+          ),
       },
     ],
   },

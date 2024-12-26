@@ -1,3 +1,4 @@
+import axios from "axios";
 import React from "react";
 import { useLoaderData } from "react-router-dom";
 import Swal from "sweetalert2";
@@ -14,7 +15,8 @@ const UpdateTutorial = () => {
     const image = form.image.value;
     const language = form.language.value;
     const prices = form.prices.value;
-    const review = form.review.value;
+    const reviews = form.review.value;
+    const review = parseInt(reviews);
     const description = form.description.value;
     const price = parseInt(prices);
     const tutorialData = {
@@ -37,16 +39,14 @@ const UpdateTutorial = () => {
       confirmButtonText: "Yes, Update it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:5000/update-tutorial/${_id}`, {
-          method: "PATCH",
+        axios.patch(`https://assignment-11-server-side-sandy.vercel.app/update-tutorial/${_id}`, tutorialData, {
           headers: {
-            "content-type": "application/json",
+            "content-type": "application/json"
           },
-          body: JSON.stringify(tutorialData),
+          withCredentials: true,
         })
-          .then((res) => res.json())
-          .then((data) => {
-            console.log(data);
+          .then(res => {
+            const data = res.data;
             if (data.modifiedCount == 1) {
                 Swal.fire({
                   title: "Updated Successful!",
@@ -54,7 +54,13 @@ const UpdateTutorial = () => {
                   icon: "success"
                 });
             }
-          });
+          })
+          .catch(error =>{
+            Swal.fire({
+              title: "Failed!",
+              text: error.message,
+              icon: "error"})
+          })
       }
     });
   };

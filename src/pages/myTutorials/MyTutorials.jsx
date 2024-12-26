@@ -2,16 +2,16 @@ import React, { useContext, useEffect, useState } from "react";
 import { UserContext } from "../../context/AuthContext";
 import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
+import axios from "axios";
 
 const MyTutorials = () => {
   const { user } = useContext(UserContext);
   const [tutorials, setTutorials] = useState([]);
   useEffect(() => {
-    fetch(`http://localhost:5000/my-tutorials?email=${user?.email}`)
-      .then((res) => res.json())
-      .then((data) => {
-        setTutorials(data);
-      });
+    axios.get(`https://assignment-11-server-side-sandy.vercel.app/my-tutorials?email=${user?.email}`, {
+    withCredentials: true,
+    })
+    .then(res => setTutorials(res.data))
   }, [user?.email]);
 
   const handleDeleteTutorial = (id) => {
@@ -25,12 +25,11 @@ const MyTutorials = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:5000/delete-tutorial/${id}`, {
-          method: "DELETE",
+        axios.delete(`https://assignment-11-server-side-sandy.vercel.app/delete-tutorial/${id}`, {
+          withCredentials: true,
         })
-          .then((res) => res.json())
-          .then((data) => {
-            console.log(data);
+          .then(res => {
+            const data = res.data;
             if (data.deletedCount == 1) {
               Swal.fire({
                 title: "Deleted!",
@@ -42,6 +41,13 @@ const MyTutorials = () => {
               );
               setTutorials(remaining);
             }
+          })
+          .catch((error) => {
+            Swal.fire({
+              title: "Failed!",
+              text: error.message,
+              icon: "error",
+            });
           });
       }
     });

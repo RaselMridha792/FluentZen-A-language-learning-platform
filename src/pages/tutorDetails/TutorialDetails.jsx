@@ -5,6 +5,7 @@ import { MdEmail, MdOutlineCastForEducation } from "react-icons/md";
 import { useLoaderData } from "react-router-dom";
 import { UserContext } from "../../context/AuthContext";
 import Swal from "sweetalert2";
+import axios from "axios";
 
 const TutorialDetails = () => {
   const tutorials = useLoaderData();
@@ -25,22 +26,21 @@ const TutorialDetails = () => {
     const bookedTutor = {
       tutor_id: _id,
       name,
+      review: review,
       image: user_image,
       language,
       price,
       tutorEmail: email,
       email: user.email,
     };
-
-    fetch("http://localhost:5000/booked-tutor", {
-      method: "POST",
+    axios.post("https://assignment-11-server-side-sandy.vercel.app/booked-tutor", bookedTutor, {
       headers: {
         "content-type": "application/json",
       },
-      body: JSON.stringify(bookedTutor),
+      withCredentials:true,
     })
-      .then((res) => res.json())
-      .then((data) => {
+      .then(res => {
+        const data = res.data
         if (data.acknowledged) {
           Swal.fire({
             title: "Successfully Booked?",
@@ -48,7 +48,10 @@ const TutorialDetails = () => {
             icon: "success",
           });
         }
-      });
+      })
+      .catch(error=>{
+        console.log(error.message)
+      })
   };
   return (
     <>

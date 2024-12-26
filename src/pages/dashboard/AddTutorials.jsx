@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { UserContext } from "../../context/AuthContext";
 import Swal from "sweetalert2";
+import axios from "axios";
 
 const AddTutorials = () => {
   const { user } = useContext(UserContext);
@@ -27,18 +28,14 @@ const AddTutorials = () => {
       description,
       user_image,
     };
-    console.log(tutorialData);
-
-    fetch("http://localhost:5000/add-tutorials", {
-      method: "POST",
+    axios.post("https://assignment-11-server-side-sandy.vercel.app/add-tutorials", tutorialData, {
       headers: {
-        "content-type": "application/json",
+        "content-type": "application/json"
       },
-      body: JSON.stringify(tutorialData),
+      withCredentials: true,
     })
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data);
+      .then(res => {
+        const data = res.data;
         if(data.acknowledged == true){
           Swal.fire({
             title: "Added SuccessFull",
@@ -46,7 +43,14 @@ const AddTutorials = () => {
             icon: "success"
           });
         }
-      });
+      })
+      .catch(error =>{
+        Swal.fire({
+          title: "Error",
+          text: error.message,
+          icon: "error"
+        });
+      })
   };
   return (
     <>
@@ -152,7 +156,6 @@ const AddTutorials = () => {
                         type="number"
                         name="reviews"
                         defaultValue={0}
-                        placeholder="hr email"
                         className="input input-bordered w-full"
                         required
                       />

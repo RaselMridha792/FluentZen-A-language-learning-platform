@@ -1,25 +1,38 @@
 import React, { useContext, useEffect, useState } from "react";
-import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
 import { UserContext } from "../../context/AuthContext";
+import axios from "axios";
 
 const MyBookedTutors = () => {
   const [tutors, setTutors] = useState([]);
-  const {user} = useContext(UserContext)
-  
+  const {user} = useContext(UserContext);
+  const [updatedReview, setUpdatedReview]= useState(false)
 
   useEffect(()=>{
-    const loadData = async()=>{
-      const response = await fetch(`http://localhost:5000/my-booked-tutor?email=${user.email}`)
-      const data = await response.json()
-      setTutors(data)
-    }
-    loadData()
-  },[user.email])
+    axios.get(`https://assignment-11-server-side-sandy.vercel.app/my-booked-tutor?email=${user.email}`, {
+      withCredentials: true,
+    })
+    .then(res => setTutors(res.data))
+  },[user.email, updatedReview])
+
+  const handleBookedTutorReview = (tutor_id) =>{
+    fetch(`https://assignment-11-server-side-sandy.vercel.app/booked-tutor-review/${tutor_id}`,{
+      method: 'PATCH',
+      headers: {
+          'content-type': 'application/json'
+      },
+      body: JSON.stringify()
+  })
+  .then(res=> res.json())
+  .then(data =>{
+    setUpdatedReview(!updatedReview)
+    console.log('review given successfully', data)
+  })
+  }
 
   const handleReview = (tutor_id) =>{
     console.log(tutor_id)
-    fetch(`http://localhost:5000/tutor-review/${tutor_id}`,{
+    fetch(`https://assignment-11-server-side-sandy.vercel.app/tutor-review/${tutor_id}`,{
         method: 'PATCH',
         headers: {
             'content-type': 'application/json'
@@ -34,9 +47,9 @@ const MyBookedTutors = () => {
                 text: "review given successfully",
                 icon: "success"
               });
+              handleBookedTutorReview(tutor_id)
         }
     })
-    
   }
   return (
     <>
@@ -54,6 +67,7 @@ const MyBookedTutors = () => {
                   <th>Name, image</th>
                   <th>Language</th>
                   <th>$ price</th>
+                  <th>reviews</th>
                   <th>Give Review</th>
                 </tr>
               </thead>
@@ -80,6 +94,7 @@ const MyBookedTutors = () => {
                       {tutorial.language}
                     </td>
                     <td>${tutorial.price}</td>
+                    <td>{tutorial.review}</td>
                     <th className="flex gap-3">
                         <button onClick={()=> handleReview(tutorial.tutor_id)} className="btn btn-success">
                           give review
