@@ -4,7 +4,7 @@ import Categories from "../../components/layouts/Categories";
 import Stats from "./Stats";
 import { motion } from "motion/react";
 import React from "react";
-import {Helmet} from "react-helmet";
+import { Helmet } from "react-helmet";
 
 const HomePage = () => {
   return (
@@ -104,6 +104,62 @@ const HomePage = () => {
             transition={{ duration: 1 }}
           >
             <img src="https://i.ibb.co.com/M6J8dwF/Reporting-04.png" alt="" />
+          </motion.div>
+        </div>
+        <div className="my-20">
+          <h1 className="md:text-5xl text-center text-3xl font-Noto-Sans font-bold pb-10">
+            What say users about fluentZen{" "}
+          </h1>
+          <motion.div
+           initial={{ y: -100, opacity: 10 }}
+           whileInView={{ y: 0, opacity: 100 }}
+           transition={{ duration: 1 }}
+          className="grid grid-cols-1 md:grid-cols-3 gap-5 my-10">
+            <div className="card bg-gray-700 text-white font-Figtree  ">
+              <div className="card-body">
+                <div className="avatar">
+                  <div className="w-12 rounded-full">
+                    <img src="https://i.ibb.co.com/PznYkWJ/waist-up-portrait-handsome-serious-unshaven-male-keeps-hands-together-dressed-dark-blue-shirt-has-ta.jpg" />
+                  </div>
+                </div>
+                <p>
+                  "This platform transformed my career! The content is
+                  well-structured, and the mentors are incredibly supportive.
+                  Highly recommend it to anyone looking to upskill."
+                </p>
+                <h2 className="card-title">— Samantha Johnson</h2>
+              </div>
+            </div>
+            <div className="card bg-gray-700 text-white font-Figtree  ">
+              <div className="card-body">
+                <div className="avatar">
+                  <div className="w-12 rounded-full">
+                    <img src="https://i.ibb.co.com/6tD0QLJ/avatar-2oe5auz0p0f.jpg" />
+                  </div>
+                </div>
+                <p>
+                  "The interactive lessons and real-world projects made learning
+                  so engaging. I've gained the confidence to apply for my dream
+                  job!"
+                </p>
+                <h2 className="card-title">— Rajesh Kumar</h2>
+              </div>
+            </div>
+            <div className="card bg-gray-700 text-white font-Figtree  ">
+              <div className="card-body">
+                <div className="avatar">
+                  <div className="w-12 rounded-full">
+                    <img src="https://i.ibb.co.com/RyKH5cD/istockphoto-1288538088-612x612.jpg" />
+                  </div>
+                </div>
+                <p>
+                  "Exceptional experience! The resources are comprehensive, and
+                  the community is always there to help. It's more than just a
+                  website; it's a journey."
+                </p>
+                <h2 className="card-title">— Emily Chen</h2>
+              </div>
+            </div>
           </motion.div>
         </div>
       </section>
