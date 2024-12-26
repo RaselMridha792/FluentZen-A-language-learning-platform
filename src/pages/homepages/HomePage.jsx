@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import Banner from "../../components/common/Banner";
 import Categories from "../../components/layouts/Categories";
 import Stats from "./Stats";
+import { motion } from "motion/react";
 
 const HomePage = () => {
   return (
@@ -17,7 +18,11 @@ const HomePage = () => {
             Our Solution
           </h1>
           <div className="grid grid-cols1 md:grid-cols-3 gap-5 my-10">
-            <div className="flex flex-col items-center justify-center">
+            <motion.div
+              whileHover={{ scale: 1.2 }}
+              transition={{ duration: 0.5 }}
+              className="flex flex-col items-center justify-center"
+            >
               <img
                 src="https://i.ibb.co.com/vvdpKfj/00-Homepage-Lezioni-140x140.png"
                 alt=""
@@ -29,8 +34,12 @@ const HomePage = () => {
               <Link to="/find-tutors" className="btn bg-green-500 ">
                 find more
               </Link>
-            </div>
-            <div className="flex flex-col items-center justify-center">
+            </motion.div>
+            <motion.div
+              whileHover={{ scale: 1.2 }}
+              transition={{ duration: 0.5 }}
+              className="flex flex-col items-center justify-center"
+            >
               <img
                 src="https://i.ibb.co.com/jzcYkdK/00-Homepage-Academy-140x140.png"
                 alt=""
@@ -42,8 +51,12 @@ const HomePage = () => {
               <Link to="/find-tutors" className="btn bg-green-500 ">
                 find more
               </Link>
-            </div>
-            <div className="flex flex-col items-center justify-center">
+            </motion.div>
+            <motion.div
+              whileHover={{ scale: 1.2 }}
+              transition={{ duration: 0.5 }}
+              className="flex flex-col items-center justify-center"
+            >
               <img
                 src="https://i.ibb.co.com/qkXdYcs/00-Homepage-Blended-140x140.png"
                 alt=""
@@ -55,11 +68,15 @@ const HomePage = () => {
               <Link to="/find-tutors" className="btn bg-green-500 ">
                 find more
               </Link>
-            </div>
+            </motion.div>
           </div>
         </div>
         <div className="my-20 px-5 flex flex-col gap-5 items-center justify-between md:flex-row font-Noto-Sans">
-          <div>
+          <motion.div
+            initial={{ y: -100, opacity: 10 }}
+            whileInView={{ y: 0, opacity: 100 }}
+            transition={{ duration: 1 }}
+          >
             <h1 className="text-4xl ">
               {" "}
               The first step towards{" "}
@@ -70,15 +87,18 @@ const HomePage = () => {
               levels high, featuring over 250 adaptive videos to provide a
               cutting-edge self-study course.
               <br />
-               For those who initially need to
-              reinforce the basics of the English language, the Academy provides
-              a dynamic and interactive way to approach the speaking lessons
-              with more confidence.
+              For those who initially need to reinforce the basics of the
+              English language, the Academy provides a dynamic and interactive
+              way to approach the speaking lessons with more confidence.
             </p>
-          </div>
-          <div>
+          </motion.div>
+          <motion.div
+            initial={{ y: 100, opacity: 10 }}
+            whileInView={{ y: 0, opacity: 100 }}
+            transition={{ duration: 1 }}
+          >
             <img src="https://i.ibb.co.com/M6J8dwF/Reporting-04.png" alt="" />
-          </div>
+          </motion.div>
         </div>
       </section>
     </>

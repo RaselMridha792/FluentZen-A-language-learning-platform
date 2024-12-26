@@ -76,9 +76,6 @@ const TutorCard = ({ tutor }) => {
                     View Details
                   </button>
                 </Link>
-                <button className="btn bg-gray-800 text-white">
-                  Add Tutorials
-                </button>
               </div>
             </div>
           </div>
