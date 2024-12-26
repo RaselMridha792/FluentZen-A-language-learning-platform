@@ -65,7 +65,7 @@ const MyTutorials = () => {
               {/* head */}
               <thead>
                 <tr>
-                  <th>Name</th>
+                  <th>Name, image</th>
                   <th>Language, review</th>
                   <th>Description</th>
                   <th>$ price</th>
@@ -88,9 +88,6 @@ const MyTutorials = () => {
                         </div>
                         <div>
                           <div className="font-bold">{tutorial.name}</div>
-                          <div className="text-sm opacity-50">
-                            United States
-                          </div>
                         </div>
                       </div>
                     </td>
@@ -98,7 +95,7 @@ const MyTutorials = () => {
                       {tutorial.language}
                       <br />
                       <span className="badge badge-ghost badge-sm">
-                        review: {tutorial.review} stars
+                        review: {tutorial.review}
                       </span>
                     </td>
                     <td className="lg:w-1/3">

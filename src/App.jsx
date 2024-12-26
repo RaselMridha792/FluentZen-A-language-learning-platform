@@ -7,7 +7,9 @@ function App() {
   return (
     <>
     <Navbar></Navbar>
+    <section className='min-h-screen'>
     <Outlet></Outlet>
+    </section>
     <Footer></Footer>
     </>
   )
