@@ -32,13 +32,24 @@ const SignUp = () => {
     }
     setErrorMessage("");
 
-    const userInfo = { name, email, password, photo };
+    const userInfo = { name, email, photo };
 
     handleSignUp(email, password)
       .then((result) => {
         handleUpdateProfile({ displayName: name, photoURL: photo })
           .then(() => {
             toast.success("account created successfully");
+            fetch('https://assignment-11-server-side-sandy.vercel.app/save-user', {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json',
+              },
+              body: JSON.stringify(userInfo),
+            })
+            .then(res => res.json())
+            .then(data => {
+              console.log('user created successfully', data)
+            })
             navigate("/");
           })
           .catch((error) => {

@@ -78,11 +78,6 @@ const SignIn = () => {
                 {eye ? <FaEyeSlash /> : <FaRegEye />}
               </div>
             </div>
-              <label className="label">
-                <Link to="/resetPassword" className="label-text-alt link link-hover">
-                  Forgot password?
-                </Link>
-              </label>
             <div className="form-control mt-6">
               <button className="btn btn-primary">Login</button>
               <p className="text-center py-3">

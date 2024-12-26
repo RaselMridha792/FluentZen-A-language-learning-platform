@@ -34,6 +34,7 @@ const AuthContext = ({ children }) => {
       if (currentUser) {
         setUser(currentUser);
 
+        // for save user info to databse
         // for authorization with jwt
         if (currentUser?.email) {
           const user = { email: currentUser.email };
