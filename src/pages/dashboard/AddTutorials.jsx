@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import { UserContext } from "../../context/AuthContext";
 import Swal from "sweetalert2";
 import axios from "axios";
+import { Helmet } from "react-helmet";
 
 const AddTutorials = () => {
   const { user } = useContext(UserContext);
@@ -55,6 +56,10 @@ const AddTutorials = () => {
   return (
     <>
       <section className="max-w-screen-2xl mx-auto px-5 font-Noto-Sans">
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>FluentZen | Add Tutorials</title>
+      </Helmet>
         <div className="py-5 mt-10">
           <h1 className="md:text-4xl text-xl font-bold uppercase text-center">
             Add a tutorial

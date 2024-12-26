@@ -3,15 +3,20 @@ import { UserContext } from "../../context/AuthContext";
 import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
 import axios from "axios";
+import { Helmet } from "react-helmet";
 
 const MyTutorials = () => {
   const { user } = useContext(UserContext);
   const [tutorials, setTutorials] = useState([]);
   useEffect(() => {
-    axios.get(`https://assignment-11-server-side-sandy.vercel.app/my-tutorials?email=${user?.email}`, {
-    withCredentials: true,
-    })
-    .then(res => setTutorials(res.data))
+    axios
+      .get(
+        `https://assignment-11-server-side-sandy.vercel.app/my-tutorials?email=${user?.email}`,
+        {
+          withCredentials: true,
+        }
+      )
+      .then((res) => setTutorials(res.data));
   }, [user?.email]);
 
   const handleDeleteTutorial = (id) => {
@@ -25,10 +30,14 @@ const MyTutorials = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        axios.delete(`https://assignment-11-server-side-sandy.vercel.app/delete-tutorial/${id}`, {
-          withCredentials: true,
-        })
-          .then(res => {
+        axios
+          .delete(
+            `https://assignment-11-server-side-sandy.vercel.app/delete-tutorial/${id}`,
+            {
+              withCredentials: true,
+            }
+          )
+          .then((res) => {
             const data = res.data;
             if (data.deletedCount == 1) {
               Swal.fire({
@@ -56,6 +65,10 @@ const MyTutorials = () => {
     <>
       <div>
         <div className="max-w-screen-2xl mx-auto px-5 font-Noto-Sans">
+          <Helmet>
+            <meta charSet="utf-8" />
+            <title>FluentZen | My Tutorials</title>
+          </Helmet>
           <h1 className="text-3xl font-bolt uppercase my-10">
             Your All Tutorials
           </h1>

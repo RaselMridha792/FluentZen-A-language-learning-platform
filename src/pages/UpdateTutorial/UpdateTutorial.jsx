@@ -1,5 +1,6 @@
 import axios from "axios";
 import React from "react";
+import { Helmet } from "react-helmet";
 import { useLoaderData } from "react-router-dom";
 import Swal from "sweetalert2";
 
@@ -67,6 +68,10 @@ const UpdateTutorial = () => {
   return (
     <>
       <section className="max-w-screen-2xl mx-auto px-5 font-Noto-Sans">
+      <Helmet>
+            <meta charSet="utf-8" />
+            <title>FluentZen | Update Tutorials</title>
+          </Helmet>
         <div className="py-5 mt-10">
           <h1 className="md:text-4xl text-xl font-bold uppercase text-center">
             Update Your Tutorial

@@ -6,6 +6,7 @@ import { useLoaderData } from "react-router-dom";
 import { UserContext } from "../../context/AuthContext";
 import Swal from "sweetalert2";
 import axios from "axios";
+import { Helmet } from "react-helmet";
 
 const TutorialDetails = () => {
   const tutorials = useLoaderData();
@@ -56,6 +57,10 @@ const TutorialDetails = () => {
   return (
     <>
       <div className="max-w-screen-2xl mx-auto flex flex-col lg:flex-row lg:gap-10 font-Noto-Sans px-5">
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>FluentZen | Tutor Details</title>
+      </Helmet>
         <div className="lg:w-2/3 p-5 mt-10">
           <div className=" gap-5 flex flex-col md:flex-row">
             <img className="w-44 h-44 object-cover" src={user_image} alt="" />

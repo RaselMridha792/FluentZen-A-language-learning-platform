@@ -4,9 +4,11 @@ import { Link, useNavigate } from "react-router-dom";
 import { UserContext } from "../../context/AuthContext";
 import React from "react";
 import { ToastContainer, toast } from "react-toastify";
+import { Helmet } from "react-helmet";
 
 const SignUp = () => {
-  const { handleSignUp, handleUpdateProfile, handleSignInGoogle } = useContext(UserContext);
+  const { handleSignUp, handleUpdateProfile, handleSignInGoogle } =
+    useContext(UserContext);
   const [eye, SetEye] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
   const passwordRegex =
@@ -39,17 +41,20 @@ const SignUp = () => {
         handleUpdateProfile({ displayName: name, photoURL: photo })
           .then(() => {
             toast.success("account created successfully");
-            fetch('https://assignment-11-server-side-sandy.vercel.app/save-user', {
-              method: 'POST',
-              headers: {
-                'Content-Type': 'application/json',
-              },
-              body: JSON.stringify(userInfo),
-            })
-            .then(res => res.json())
-            .then(data => {
-              console.log('user created successfully', data)
-            })
+            fetch(
+              "https://assignment-11-server-side-sandy.vercel.app/save-user",
+              {
+                method: "POST",
+                headers: {
+                  "Content-Type": "application/json",
+                },
+                body: JSON.stringify(userInfo),
+              }
+            )
+              .then((res) => res.json())
+              .then((data) => {
+                console.log("user created successfully", data);
+              });
             navigate("/");
           })
           .catch((error) => {
@@ -78,6 +83,10 @@ const SignUp = () => {
   return (
     <>
       <div className="hero bg-base-200 min-h-screen">
+        <Helmet>
+          <meta charSet="utf-8" />
+          <title>FluentZen | Sign Up</title>
+        </Helmet>
         <ToastContainer></ToastContainer>
         <div className="card bg-base-100 md:w-1/4 px-5 py-5 shadow-2xl">
           <form onSubmit={handleSignUpemail} className="card-body">

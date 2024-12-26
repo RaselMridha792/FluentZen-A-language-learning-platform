@@ -4,6 +4,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { UserContext } from "../../context/AuthContext";
 import React from 'react';
 import { ToastContainer, toast } from 'react-toastify';
+import { Helmet } from "react-helmet";
 
 const SignIn = () => {
   const [eye, SetEye] = useState(false);
@@ -44,6 +45,10 @@ const SignIn = () => {
   return (
     <>
       <div className="hero bg-base-200 min-h-screen">
+      <Helmet>
+            <meta charSet="utf-8" />
+            <title>FluentZen | Login</title>
+          </Helmet>
         <ToastContainer></ToastContainer>
         <div className="card bg-base-100 lg:w-1/4 px-5 py-5 shadow-2xl">
           <form onSubmit={handleSignIn} className="card-body">

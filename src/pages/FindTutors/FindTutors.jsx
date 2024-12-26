@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import TutorCard from "./TutorCard";
 import { useLoaderData } from "react-router-dom";
 import Select from "react-select";
+import { Helmet } from "react-helmet";
 
 const FindTutors = () => {
   const [tutors, setTutors] = useState([]);
@@ -100,6 +101,10 @@ const FindTutors = () => {
   return (
     <>
       <section className="max-w-screen-2xl mx-auto px-5">
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>FluentZen | Find Tutors</title>
+      </Helmet>
         <div className="my-10 flex flex-col md:flex-row gap-10 items-center justify-between">
           <h1 className="text-2xl md:text-4xl font-bold">
             Find Your Best Tutors For Learning Language
