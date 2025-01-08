@@ -35,9 +35,9 @@ FluentZen is an e-learning platform designed to help users master new languages 
 - **Icons**: React Icons
 - **SEO**: React Helmet
 
-## "dependencies"
+## dependencies
 
-    "axios": "^1.7.9",
+  {  "axios": "^1.7.9",
     "firebase": "^11.1.0",
     "localforage": "^1.10.0",
     "match-sorter": "^8.0.0",
@@ -52,6 +52,26 @@ FluentZen is an e-learning platform designed to help users master new languages 
     "react-tooltip": "^5.28.0",
     "sort-by": "^1.2.0",
     "sweetalert2": "^11.15.3"
+    }
+
+  ## devDependencies
+  
+  {
+    "@eslint/js": "^9.17.0",
+    "@types/react": "^18.3.17",
+    "@types/react-dom": "^18.3.5",
+    "@vitejs/plugin-react": "^4.3.4",
+    "autoprefixer": "^10.4.20",
+    "daisyui": "^4.12.22",
+    "eslint": "^9.17.0",
+    "eslint-plugin-react": "^7.37.2",
+    "eslint-plugin-react-hooks": "^5.0.0",
+    "eslint-plugin-react-refresh": "^0.4.16",
+    "globals": "^15.13.0",
+    "postcss": "^8.4.49",
+    "tailwindcss": "^3.4.17",
+    "vite": "^6.0.3"
+  }
     
 ## Installation
 
@@ -59,3 +79,8 @@ FluentZen is an e-learning platform designed to help users master new languages 
    ```sh
    git clone https://github.com/programming-hero-web-course2/b10a11-client-side-RaselMridha792
    cd fluentzen
+2. npm install
+
+3. env.local
+   create a env.local and paste your firebase api keys
+4. npm run dev
