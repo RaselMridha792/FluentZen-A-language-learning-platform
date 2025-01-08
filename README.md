@@ -36,8 +36,7 @@ FluentZen is an e-learning platform designed to help users master new languages 
 - **SEO**: React Helmet
 
 ## dependencies
-
-  {  "axios": "^1.7.9",
+    "axios": "^1.7.9",
     "firebase": "^11.1.0",
     "localforage": "^1.10.0",
     "match-sorter": "^8.0.0",
@@ -52,11 +51,10 @@ FluentZen is an e-learning platform designed to help users master new languages 
     "react-tooltip": "^5.28.0",
     "sort-by": "^1.2.0",
     "sweetalert2": "^11.15.3"
-    }
 
   ## devDependencies
   
-  {
+
     "@eslint/js": "^9.17.0",
     "@types/react": "^18.3.17",
     "@types/react-dom": "^18.3.5",
@@ -71,7 +69,7 @@ FluentZen is an e-learning platform designed to help users master new languages 
     "postcss": "^8.4.49",
     "tailwindcss": "^3.4.17",
     "vite": "^6.0.3"
-  }
+
     
 ## Installation
 
@@ -80,7 +78,5 @@ FluentZen is an e-learning platform designed to help users master new languages 
    git clone https://github.com/programming-hero-web-course2/b10a11-client-side-RaselMridha792
    cd fluentzen
 2. npm install
-
-3. env.local
-   create a env.local and paste your firebase api keys
-4. npm run dev
+3.  create a env.local and paste your firebase api keys
+6. npm run dev
