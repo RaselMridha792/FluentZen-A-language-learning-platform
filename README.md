@@ -35,6 +35,24 @@ FluentZen is an e-learning platform designed to help users master new languages 
 - **Icons**: React Icons
 - **SEO**: React Helmet
 
+## "dependencies"
+
+    "axios": "^1.7.9",
+    "firebase": "^11.1.0",
+    "localforage": "^1.10.0",
+    "match-sorter": "^8.0.0",
+    "motion": "^11.15.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-helmet": "^6.1.0",
+    "react-icons": "^5.4.0",
+    "react-router-dom": "^7.1.0",
+    "react-select": "^5.9.0",
+    "react-toastify": "^11.0.2",
+    "react-tooltip": "^5.28.0",
+    "sort-by": "^1.2.0",
+    "sweetalert2": "^11.15.3"
+    
 ## Installation
 
 1. Clone the repository:
