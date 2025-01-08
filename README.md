@@ -75,8 +75,8 @@ FluentZen is an e-learning platform designed to help users master new languages 
 
 1. Clone the repository:
    ```sh
-   git clone https://github.com/programming-hero-web-course2/b10a11-client-side-RaselMridha792
-   cd fluentzen
-2. npm install
+   git clone https://github.com/RaselMridha792/FluentZen-A-language-learning-platform
+   
+2. npm install to installing dependency
 3.  create a env.local and paste your firebase api keys
 6. npm run dev
