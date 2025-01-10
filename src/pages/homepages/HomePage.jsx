@@ -3,10 +3,12 @@ import Banner from "../../components/common/Banner";
 import Categories from "../../components/layouts/Categories";
 import Stats from "./Stats";
 import { motion } from "motion/react";
-import React from "react";
+import React, { useContext } from "react";
 import { Helmet } from "react-helmet";
+import { ColorContext } from "../../components/hook/ColorProvider";
 
 const HomePage = () => {
+  const {changes} = useContext(ColorContext)
   return (
     <>
       <Banner></Banner>
@@ -14,7 +16,7 @@ const HomePage = () => {
         <meta charSet="utf-8" />
         <title>FluentZen | Home</title>
       </Helmet>
-      <section className="max-w-screen-2xl mx-auto px-5 ">
+      <section className={`max-w-screen-2xl mx-auto px-5 ${changes?'text-white':'text-black'}`}>
         <Stats></Stats>
         <div className="my-10">
           <Categories></Categories>

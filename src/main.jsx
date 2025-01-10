@@ -5,14 +5,17 @@ import App from "./App.jsx";
 import { RouterProvider } from "react-router-dom";
 import { router } from "./routes/Router.jsx";
 import AuthContext from "./context/AuthContext.jsx";
+import ColorProvider from "./components/hook/ColorProvider.jsx";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <AuthContext>
-      {" "}
-      <RouterProvider router={router}>
-        <App />
-      </RouterProvider>
-    </AuthContext>
+    <ColorProvider>
+      <AuthContext>
+        {" "}
+        <RouterProvider router={router}>
+          <App />
+        </RouterProvider>
+      </AuthContext>
+    </ColorProvider>
   </StrictMode>
 );

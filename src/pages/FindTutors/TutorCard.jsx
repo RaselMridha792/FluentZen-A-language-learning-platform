@@ -1,15 +1,13 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { FaStar } from "react-icons/fa";
 import { HiCheckBadge } from "react-icons/hi2";
-import { IoLanguageOutline, IoLanguageSharp } from "react-icons/io5";
+import {  IoLanguageSharp } from "react-icons/io5";
 import { MdOutlineCastForEducation } from "react-icons/md";
 import { Link } from "react-router-dom";
+import { ColorContext } from "../../components/hook/ColorProvider";
 
 const TutorCard = ({ tutor }) => {
-  const [learnMore, setLearnMore] = useState(true);
-  const handleLearnMore = () => {
-    setLearnMore(!learnMore);
-  };
+  const {changes} = useContext(ColorContext)
   const {
     name,
     email,
@@ -24,11 +22,11 @@ const TutorCard = ({ tutor }) => {
   return (
     <>
       <div className="flex gap-5 group font-Noto-Sans">
-        <div className="border-2 p-5 hover:border-black lg:w-2/3">
+        <div className={`border-2 p-5 hover:border-black lg:w-2/3 `}>
           <div className="flex flex-col md:flex-row gap-5">
             <div className="flex gap-3">
               <img
-                className="md:w-44 md:h-44 h-32 w-32 object-cover"
+                className="md:w-44 md:h-44 h-32 w-32 object-cover "
                 src={user_image}
                 alt=""
               />
@@ -101,7 +99,7 @@ const TutorCard = ({ tutor }) => {
                   </div>
                 </div>
                 <div>
-                  <p>{description.slice(0, 300)}</p>
+                  <p className="">{description.slice(0, 300)}</p>
                   <div className="mt-2">
                     <Link to={`/tutor/details/${_id}`}>
                       <button className="btn bg-emerald-400 hover:bg-emerald-200">

@@ -1,13 +1,16 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { UserContext } from "../../context/AuthContext";
 import { signOut } from "firebase/auth";
 import { auth } from "../auth/firebase.init";
 import logo from "../../assets/FluentZen.png";
 import { Tooltip } from "react-tooltip";
+import { ColorContext } from "../hook/ColorProvider";
 
 const Navbar = () => {
   const { user } = useContext(UserContext);
+  const {handleChangeText} = useContext(ColorContext);
+
   const links = (
     <>
       <div className="flex flex-col lg:flex-row gap-5 text-lg uppercase font-bold text-black">
@@ -29,6 +32,7 @@ const Navbar = () => {
         console.log(error.message);
       });
   };
+
   return (
     <>
       <div className="bg-emerald-300 sticky top-0 z-50 shadow-sm pb-3">
@@ -40,6 +44,7 @@ const Navbar = () => {
             </p>
           </div>
           <input
+          onChange={handleChangeText}
             type="checkbox"
             value="dark"
             className="toggle theme-controller"

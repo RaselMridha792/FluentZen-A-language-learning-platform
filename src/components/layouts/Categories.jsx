@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
 import { FaArrowRight } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import { ColorContext } from "../hook/ColorProvider";
 
 const Categories = () => {
+  const {changes} = useContext(ColorContext)
   const category = [
     {
       language: "english",
@@ -52,7 +54,9 @@ const Categories = () => {
     <>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 md:gap-5 font-Figtree">
         {category.map((singleCategory, index) => (
-            <div key={index} className="flex items-center justify-center gap-2 border py-5 px-10">
+            <div 
+            key={index} 
+            className={`flex items-center justify-center gap-2 ${changes?'bg-gray-600 border-none':'bg-white'} border rounded-lg py-5 px-10`}>
               <img
                 className="w-12"
                 src={singleCategory.icons}

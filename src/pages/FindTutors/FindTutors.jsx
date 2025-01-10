@@ -1,14 +1,17 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import TutorCard from "./TutorCard";
 import { useLoaderData } from "react-router-dom";
 import Select from "react-select";
 import { Helmet } from "react-helmet";
+import { ColorContext } from "../../components/hook/ColorProvider";
 
 const FindTutors = () => {
   const [tutors, setTutors] = useState([]);
   const categoryTutor = useLoaderData();
   const [selectedLanguage, setSelectedLanguage] = useState(null);
   const [searchLanguage, setSearchLanguage] = useState(null);
+
+  const {changes} = useContext(ColorContext)
   useEffect(() => {
     if(searchLanguage){
       const loadData2 = async () =>{
@@ -100,7 +103,7 @@ const FindTutors = () => {
   };
   return (
     <>
-      <section className="max-w-screen-2xl mx-auto px-5">
+      <section className={`max-w-screen-2xl ${changes?'text-white':'text-black'} mx-auto px-5`}>
       <Helmet>
         <meta charSet="utf-8" />
         <title>FluentZen | Find Tutors</title>
@@ -115,6 +118,7 @@ const FindTutors = () => {
               value={selectedLanguage}
               onChange={handleChangeLanguage}
               placeholder="search for tutor"
+              className="text-black"
               isClearable
             ></Select>
             {selectedLanguage && (
