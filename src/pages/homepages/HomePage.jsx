@@ -115,7 +115,7 @@ const HomePage = () => {
            whileInView={{ y: 0, opacity: 100 }}
            transition={{ duration: 1 }}
           className="grid grid-cols-1 md:grid-cols-3 gap-5 my-10">
-            <div className="card bg-gray-700 text-white font-Figtree  ">
+            <div className="card bg-emerald-400 text-black font-Figtree  ">
               <div className="card-body">
                 <div className="avatar">
                   <div className="w-12 rounded-full">
@@ -130,7 +130,7 @@ const HomePage = () => {
                 <h2 className="card-title">— Samantha Johnson</h2>
               </div>
             </div>
-            <div className="card bg-gray-700 text-white font-Figtree  ">
+            <div className="card bg-emerald-400 text-black font-Figtree  ">
               <div className="card-body">
                 <div className="avatar">
                   <div className="w-12 rounded-full">
@@ -145,7 +145,7 @@ const HomePage = () => {
                 <h2 className="card-title">— Rajesh Kumar</h2>
               </div>
             </div>
-            <div className="card bg-gray-700 text-white font-Figtree  ">
+            <div className="card bg-emerald-400 text-black font-Figtree  ">
               <div className="card-body">
                 <div className="avatar">
                   <div className="w-12 rounded-full">
