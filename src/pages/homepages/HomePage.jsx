@@ -6,6 +6,7 @@ import { motion } from "motion/react";
 import React, { useContext } from "react";
 import { Helmet } from "react-helmet";
 import { ColorContext } from "../../components/hook/ColorProvider";
+import AcademyFigure from "./AcademyFigure";
 
 const HomePage = () => {
   const {changes} = useContext(ColorContext)
@@ -165,6 +166,7 @@ const HomePage = () => {
           </motion.div>
         </div>
       </section>
+      <AcademyFigure></AcademyFigure>
     </>
   );
 };
