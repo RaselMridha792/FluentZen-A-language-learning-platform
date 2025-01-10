@@ -24,10 +24,7 @@ const Stats = () => {
     sum = sum + review;
   }
   return (
-    <motion.div
-      initial={{ y: 100, opacity: 10 }}
-      whileInView={{ y: 0, opacity: 100 }}
-      transition={{ duration: 1 }}
+    <div
       className={`stats shadow w-full mt-20 mb-10 ${changes?'text-white bg-gray-600':'text-black'}`}
     >
       <div className="stat">
@@ -52,7 +49,7 @@ const Stats = () => {
         <div className="stat-value">{users?.length}+</div>
         <div className="">active user</div>
       </div>
-    </motion.div>
+    </div>
   );
 };
 

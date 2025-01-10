@@ -3,11 +3,13 @@ import Swal from "sweetalert2";
 import { UserContext } from "../../context/AuthContext";
 import axios from "axios";
 import { Helmet } from "react-helmet";
+import { ColorContext } from "../../components/hook/ColorProvider";
 
 const MyBookedTutors = () => {
   const [tutors, setTutors] = useState([]);
   const { user } = useContext(UserContext);
   const [updatedReview, setUpdatedReview] = useState(false);
+  const {changes} = useContext(ColorContext)
 
   useEffect(() => {
     axios
@@ -65,7 +67,7 @@ const MyBookedTutors = () => {
   return (
     <>
       <div>
-        <div className="max-w-screen-2xl mx-auto px-5 font-Noto-Sans">
+        <div className={`max-w-screen-2xl mx-auto px-5 font-Noto-Sans ${changes?'text-white':'text-black'}`}>
           <Helmet>
             <meta charSet="utf-8" />
             <title>FluentZen | My Booked Tutors</title>

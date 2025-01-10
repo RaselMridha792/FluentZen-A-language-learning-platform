@@ -3,9 +3,11 @@ import { UserContext } from "../../context/AuthContext";
 import Swal from "sweetalert2";
 import axios from "axios";
 import { Helmet } from "react-helmet";
+import { ColorContext } from "../../components/hook/ColorProvider";
 
 const AddTutorials = () => {
   const { user } = useContext(UserContext);
+  const {changes} = useContext(ColorContext);
   const handleAddTutorial = (e) => {
     e.preventDefault();
     const form = e.target;
@@ -55,7 +57,7 @@ const AddTutorials = () => {
   };
   return (
     <>
-      <section className="max-w-screen-2xl mx-auto px-5 font-Noto-Sans">
+      <section className={`max-w-screen-2xl mx-auto px-5 font-Noto-Sans ${changes?'text-white':'text-black'}`}>
       <Helmet>
         <meta charSet="utf-8" />
         <title>FluentZen | Add Tutorials</title>
@@ -64,7 +66,7 @@ const AddTutorials = () => {
           <h1 className="md:text-4xl text-xl font-bold uppercase text-center">
             Add a tutorial
           </h1>
-          <p className="py-3 text-gray-500 md:text-xl text-center">
+          <p className="py-3 md:text-xl text-center">
             find best matched student for you
           </p>
         </div>
@@ -194,7 +196,7 @@ const AddTutorials = () => {
                   </div>
                   <hr className="md:my-10 my-5" />
                   <div className="mt-5">
-                    <button className="btn bg-gray-900 hover:bg-gray-700 w-full text-white">
+                    <button className="btn bg-emerald-500 hover:bg-emerald-600 w-full text-white">
                       submit tutorial
                     </button>
                   </div>

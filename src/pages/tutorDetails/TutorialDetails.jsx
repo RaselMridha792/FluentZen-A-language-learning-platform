@@ -114,7 +114,7 @@ const TutorialDetails = () => {
             <div className="space-y-2">
               <button
                 onClick={handleBookTutor}
-                className="btn bg-gray-800 hover:bg-white hover:text-black hover:border-black text-white w-full"
+                className="btn bg-emerald-500 hover:bg-emerald-600 hover:text-black hover:border-black text-white w-full"
               >
                 Book Now
               </button>

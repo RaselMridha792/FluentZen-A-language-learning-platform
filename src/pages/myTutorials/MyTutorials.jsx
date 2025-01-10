@@ -4,10 +4,13 @@ import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
 import axios from "axios";
 import { Helmet } from "react-helmet";
+import { ColorContext } from "../../components/hook/ColorProvider";
 
 const MyTutorials = () => {
   const { user } = useContext(UserContext);
   const [tutorials, setTutorials] = useState([]);
+
+  const {changes} = useContext(ColorContext)
   useEffect(() => {
     axios
       .get(
@@ -64,7 +67,7 @@ const MyTutorials = () => {
   return (
     <>
       <div>
-        <div className="max-w-screen-2xl mx-auto px-5 font-Noto-Sans">
+        <div className={`max-w-screen-2xl mx-auto px-5 font-Noto-Sans ${changes?'text-white':'text-black'}`}>
           <Helmet>
             <meta charSet="utf-8" />
             <title>FluentZen | My Tutorials</title>
