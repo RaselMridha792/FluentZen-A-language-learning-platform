@@ -80,6 +80,7 @@ const SignUp = () => {
         toast.error(error.message);
       });
   };
+
   return (
     <>
       <div className="hero bg-base-200 min-h-screen">
@@ -91,14 +92,6 @@ const SignUp = () => {
         <div className="card bg-base-100 md:w-1/4 px-5 py-5 shadow-2xl">
           <form onSubmit={handleSignUpemail} className="card-body">
             <h1 className="text-center text-3xl font-bold">Sign Up Now</h1>
-            <div>
-              <button
-                onClick={handleSignInWithGoogle}
-                className="btn btn-outline w-full"
-              >
-                Sign In With Google
-              </button>
-            </div>
             <div className="form-control">
               <label className="label">
                 <span className="label-text">Full Name*</span>
@@ -151,7 +144,15 @@ const SignUp = () => {
               </div>
             </div>
             <div className="form-control mt-6">
-              <button className="btn btn-primary">Sign Up</button>
+              <button className="btn bg-emerald-500 hover:bg-emerald-600 text-black">Sign Up</button>
+              <div className="mt-5">
+                <button
+                  onClick={handleSignInWithGoogle}
+                  className="btn border-emerald-500 hover:bg-emerald-500 hover:text-white text-emerald-500 bg-white  w-full"
+                >
+                  Sign In With Google
+                </button>
+              </div>
               <p className="text-center py-3">
                 have an account? please{" "}
                 <Link className="text-red-500" to="/signIn">

@@ -9,7 +9,7 @@ import { ColorContext } from "../hook/ColorProvider";
 
 const Navbar = () => {
   const { user } = useContext(UserContext);
-  const {handleChangeText} = useContext(ColorContext);
+  const { handleChangeText } = useContext(ColorContext);
 
   const links = (
     <>
@@ -17,8 +17,12 @@ const Navbar = () => {
         <Link to="/">home</Link>
         <Link to="/find-tutors">Find Tutors</Link>
         <Link to={`/my-booked-tutor/${user?.email}`}>My Booked Tutor</Link>
-        <Link to="/add-tutorials">Add Tutorials</Link>
-        <Link to="/my-tutorials">My Tutorials</Link>
+        {user && (
+          <>
+            <Link to="/add-tutorials">Add Tutorials</Link>
+            <Link to="/my-tutorials">My Tutorials</Link>
+          </>
+        )}
       </div>
     </>
   );
@@ -44,7 +48,7 @@ const Navbar = () => {
             </p>
           </div>
           <input
-          onChange={handleChangeText}
+            onChange={handleChangeText}
             type="checkbox"
             value="dark"
             className="toggle theme-controller"

@@ -52,10 +52,7 @@ const SignIn = () => {
         <ToastContainer></ToastContainer>
         <div className="card bg-base-100 lg:w-1/4 px-5 py-5 shadow-2xl">
           <form onSubmit={handleSignIn} className="card-body">
-            <h1 className="text-center text-3xl font-bold">Login In Now</h1>
-            <div>
-              <button onClick={handleSignInWithGoogle} className="btn btn-outline w-full">Sign In With Google</button>
-            </div>
+            <h1 className={`text-center text-3xl font-bold`}>Login In Now</h1>
             <div className="form-control">
               <label className="label">
                 <span className="label-text">Email*</span>
@@ -84,7 +81,10 @@ const SignIn = () => {
               </div>
             </div>
             <div className="form-control mt-6">
-              <button className="btn btn-primary">Login</button>
+              <button className="btn bg-emerald-500 hover:bg-emerald-600">Login</button>
+              <div className="mt-5">
+              <button onClick={handleSignInWithGoogle} className="btn border-emerald-500 hover:bg-emerald-500 hover:text-white text-emerald-500 bg-white  w-full">Sign In With Google</button>
+            </div>
               <p className="text-center py-3">
                 don't have any account? please {"  "}
                 <Link className="text-red-500" to="/signUp">
