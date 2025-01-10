@@ -31,7 +31,7 @@ const Navbar = () => {
   };
   return (
     <>
-      <div className="bg-emerald-300">
+      <div className="bg-emerald-300 sticky top-0 z-50 shadow-sm pb-3">
         <div className="max-w-screen-2xl mx-auto flex justify-between pt-5 px-5">
           <div></div>
           <div>
@@ -76,7 +76,9 @@ const Navbar = () => {
               </ul>
             </div>
             <div>
-              <Link to="/"><img className="w-64" src={logo} alt="" /></Link>
+              <Link to="/">
+                <img className="w-64" src={logo} alt="" />
+              </Link>
             </div>
           </div>
           <div className="navbar-center hidden lg:flex">

@@ -7,7 +7,7 @@ import { motion } from "motion/react";
 const Banner = () => {
   return (
     <>
-      <div className="bg-emerald-300 font-Noto-Sans py-20 text-black">
+      <div className="bg-emerald-300 font-Noto-Sans md:py-36 py-20  text-black">
         <div className="flex flex-col lg:flex-row items-center justify-between lg:w-8/12 md:w-10/12 gap-10 mx-auto px-5">
           <motion.div
             initial={{ y: -100, opacity: 10 }}
