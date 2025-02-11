@@ -22,7 +22,7 @@ const TutorCard = ({ tutor }) => {
   return (
     <>
       <div className="flex gap-5 group font-Noto-Sans">
-        <div className={`border-2 p-5 hover:border-black lg:w-2/3 `}>
+        <div className={`border-2 p-5 border-gray-200 rounded-lg shadow-lg hover:border-black lg:w-2/3 `}>
           <div className="flex flex-col md:flex-row gap-5">
             <div className="flex gap-3">
               <img
@@ -115,7 +115,7 @@ const TutorCard = ({ tutor }) => {
 
         {/* right side  */}
         <div className="w-1/3  transition-opacity duration-300 opacity-0 group-hover:opacity-100 hidden lg:block">
-          <div className="border p-5 shadow-xl space-y-2">
+          <div className="border rounded-xl p-5 shadow-xl space-y-2">
             <img className="w-full h-52 object-cover" src={image} alt="" />
             <Link
               to={`/tutor/details/${_id}`}
