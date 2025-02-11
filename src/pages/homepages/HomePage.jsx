@@ -23,58 +23,55 @@ const HomePage = () => {
           <Categories></Categories>
         </div>
         <div className="my-20">
-          <h1 className="md:text-6xl text-3xl font-Noto-Sans text-center">
+          <h1 className="md:text-5xl font-bold text-3xl font-Noto-Sans text-center">
             Our Solution
           </h1>
-          <div className="grid grid-cols1 md:grid-cols-3 gap-5 my-10">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-5 my-10">
             <motion.div
-              whileHover={{ scale: 1.2 }}
               transition={{ duration: 0.5 }}
-              className="flex flex-col items-center justify-center"
+              className="flex flex-col border rounded-lg p-5 shadow-sm hover:shadow-xl duration-300 items-center justify-center"
             >
               <img
                 src="https://i.ibb.co.com/vvdpKfj/00-Homepage-Lezioni-140x140.png"
                 alt=""
               />
-              <h1 className="lg:w-1/2 text-center py-3">
+              <h1 className=" text-center py-3">
                 An intensive, effective way to learn a language through
                 speaking.
               </h1>
-              <Link to="/find-tutors" className="btn bg-green-500 ">
+              <Link to="/find-tutors" className="btn bg-black text-white ">
                 find more
               </Link>
             </motion.div>
             <motion.div
-              whileHover={{ scale: 1.2 }}
               transition={{ duration: 0.5 }}
-              className="flex flex-col items-center justify-center"
+              className="flex flex-col items-center border rounded-lg p-5 shadow-sm hover:shadow-xl duration-300 justify-center"
             >
               <img
                 src="https://i.ibb.co.com/jzcYkdK/00-Homepage-Academy-140x140.png"
                 alt=""
               />
-              <h1 className="lg:w-1/2 text-center py-3">
+              <h1 className=" text-center py-3">
                 An interactive, self-study course to approach speaking lessons
                 with more confidence.
               </h1>
-              <Link to="/find-tutors" className="btn bg-green-500 ">
+              <Link to="/find-tutors" className="btn bg-black text-white ">
                 find more
               </Link>
             </motion.div>
             <motion.div
-              whileHover={{ scale: 1.2 }}
               transition={{ duration: 0.5 }}
-              className="flex flex-col items-center justify-center"
+              className="flex flex-col border rounded-lg p-5 shadow-sm hover:shadow-xl duration-300 items-center justify-center"
             >
               <img
                 src="https://i.ibb.co.com/qkXdYcs/00-Homepage-Blended-140x140.png"
                 alt=""
               />
-              <h1 className="lg:w-1/2 text-center py-3">
+              <h1 className="text-center py-3">
                 A complete formula for an all-inclusive English training
                 approach.
               </h1>
-              <Link to="/find-tutors" className="btn bg-green-500 ">
+              <Link to="/find-tutors" className="btn bg-black text-white ">
                 find more
               </Link>
             </motion.div>
@@ -86,7 +83,7 @@ const HomePage = () => {
             whileInView={{ y: 0, opacity: 100 }}
             transition={{ duration: 1 }}
           >
-            <h1 className="text-4xl ">
+            <h1 className="md:text-5xl text-3xl ">
               {" "}
               The first step towards{" "}
               <span className="text-green-400">fluentZen</span>
@@ -110,7 +107,7 @@ const HomePage = () => {
           </motion.div>
         </div>
         <div className="my-20">
-          <h1 className="md:text-5xl text-center text-3xl font-Noto-Sans font-bold pb-10">
+          <h1 className="md:text-5xl text-center text-3xl font-Noto-Sans font-bold ">
             What say users about fluentZen{" "}
           </h1>
           <motion.div
