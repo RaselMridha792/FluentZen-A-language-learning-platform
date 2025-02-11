@@ -11,20 +11,21 @@ const FindTutors = () => {
   const [selectedLanguage, setSelectedLanguage] = useState(null);
   const [searchLanguage, setSearchLanguage] = useState(null);
 
-  const {changes} = useContext(ColorContext)
+  const { changes } = useContext(ColorContext);
   useEffect(() => {
-    if(searchLanguage){
-      const loadData2 = async () =>{
-        const response = await fetch(`https://assignment-11-server-side-sandy.vercel.app/find-tutors/${searchLanguage}`)
-        const data = await response.json()
-        console.log(data)
+    if (searchLanguage) {
+      const loadData2 = async () => {
+        const response = await fetch(
+          `https://assignment-11-server-side-sandy.vercel.app/find-tutors/${searchLanguage}`
+        );
+        const data = await response.json();
+        console.log(data);
         setTutors(data);
-      }
-      loadData2()
-    }
-    else if (categoryTutor) {
+      };
+      loadData2();
+    } else if (categoryTutor) {
       setTutors(categoryTutor);
-    } else{
+    } else {
       const loadData = async () => {
         const response = await fetch(
           "https://assignment-11-server-side-sandy.vercel.app/find-tutors"
@@ -99,15 +100,19 @@ const FindTutors = () => {
 
   const handleChangeLanguage = (selectedOption) => {
     setSelectedLanguage(selectedOption);
-    setSearchLanguage(selectedOption.value)
+    setSearchLanguage(selectedOption.value);
   };
   return (
     <>
-      <section className={`max-w-screen-2xl ${changes?'text-white':'text-black'} mx-auto px-5`}>
-      <Helmet>
-        <meta charSet="utf-8" />
-        <title>FluentZen | Find Tutors</title>
-      </Helmet>
+      <section
+        className={`max-w-screen-2xl ${
+          changes ? "text-white" : "text-black"
+        } mx-auto px-5`}
+      >
+        <Helmet>
+          <meta charSet="utf-8" />
+          <title>FluentZen | Find Tutors</title>
+        </Helmet>
         <div className="my-10 flex flex-col md:flex-row gap-10 items-center justify-between">
           <h1 className="text-2xl md:text-4xl font-bold">
             Find Your Best Tutors For Learning Language
@@ -131,18 +136,26 @@ const FindTutors = () => {
           </div>
         </div>
         <hr />
-        <div className="my-20">
-          <h1 className="text-3xl font-bold">
-            {tutors.length} tutors that match your needs
-          </h1>
-          <div className="mt-10 flex gap-5">
-            <div className="space-y-5">
-              {tutors.map((tutor) => (
-                <TutorCard key={tutor._id} tutor={tutor}></TutorCard>
-              ))}
+        {tutors.length > 0 ? (
+          <div className="my-20">
+            <h1 className="text-3xl font-bold">
+              {tutors.length} tutors that match your needs
+            </h1>
+            <div className="mt-10 flex gap-5">
+              <div className="space-y-5">
+                {tutors.map((tutor) => (
+                  <TutorCard key={tutor._id} tutor={tutor}></TutorCard>
+                ))}
+              </div>
             </div>
           </div>
-        </div>
+        ) : (
+          <>
+            <div className="w-full min-h-screen flex items-center justify-center">
+              <span className="loading loading-bars loading-lg"></span>
+            </div>
+          </>
+        )}
       </section>
     </>
   );
