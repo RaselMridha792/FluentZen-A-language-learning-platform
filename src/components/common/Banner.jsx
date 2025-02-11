@@ -18,7 +18,7 @@ const Banner = () => {
             <h1 className="text-4xl font-bold lg:w-3/4">
               Master skills faster with expert guidance.
             </h1>
-            <p className="lg:w-3/4">
+            <p className="lg:w-3/4 py-3">
               Master Skills Faster with Expert Guidance – Your Path to Success
               Starts Here!
             </p>

@@ -81,9 +81,9 @@ const SignIn = () => {
               </div>
             </div>
             <div className="form-control mt-6">
-              <button className="btn bg-emerald-500 hover:bg-emerald-600">Login</button>
+              <button className="btn bg-emerald-500 text-white hover:bg-emerald-600">Login</button>
               <div className="mt-5">
-              <button onClick={handleSignInWithGoogle} className="btn border-emerald-500 hover:bg-emerald-500 hover:text-white text-emerald-500 bg-white  w-full">Sign In With Google</button>
+              <button onClick={handleSignInWithGoogle} className="btn border-emerald-500  hover:bg-emerald-500 hover:text-white text-emerald-500 bg-white  w-full">Sign In With Google</button>
             </div>
               <p className="text-center py-3">
                 don't have any account? please {"  "}

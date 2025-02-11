@@ -144,7 +144,7 @@ const SignUp = () => {
               </div>
             </div>
             <div className="form-control mt-6">
-              <button className="btn bg-emerald-500 hover:bg-emerald-600 text-black">Sign Up</button>
+              <button className="btn bg-emerald-500  hover:bg-emerald-600 text-white">Sign Up</button>
               <div className="mt-5">
                 <button
                   onClick={handleSignInWithGoogle}
